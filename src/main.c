@@ -59,7 +59,7 @@ int main()
             past_events[i+1]=past_events[i];
         }
         past_events[i]=input;
-        File *fp_new=fopen()        
+        File *fp_new=fopen("pastevents", "r")        
     }
     return 0;
 }
