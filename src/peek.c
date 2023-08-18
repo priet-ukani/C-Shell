@@ -49,17 +49,8 @@ void flags_check(char *peek_to)
     }
 }
 
-void print_colored(const char *text, const char *color) {
-    printf("%s%s%s", color, text, "\x1b[0m"); // Set color and reset after printing
-}
 
-int is_executable(const char *path) {
-    struct stat st;
-    if (stat(path, &st) == 0) {
-        return (st.st_mode & S_IXUSR) != 0;
-    }
-    return 0;
-}
+
 void print_directory_contents(char *path) {
     DIR *dir = opendir(path);
     if (dir) {
@@ -72,32 +63,6 @@ void print_directory_contents(char *path) {
             entry_items[entry_count++]=entry->d_name;
         }
         qsort(entry_items, entry_count, sizeof(char *), compare_entries);
-
-                for (int i = 0; i < entry_count; i++) {
-            char *entry_name = entry_items[i];
-            const char *color = NULL;
-
-            if (is_executable(entry_name)) {
-                color = "\x1b[32m"; // Green color for executables
-            } else {
-                color = "\x1b[34m"; // Blue color for files
-            }
-
-            if (entry_name[0] == '.') {
-                color = "\x1b[90m"; // Gray color for hidden files/dirs
-            }
-
-            if (entry_name[strlen(entry_name) - 1] == '/') {
-                color = "\x1b[36m"; // Cyan color for directories
-            }
-
-            print_colored(entry_name, color);
-            printf("\n");
-            free(entry_name);
-        }
-
-        closedir(dir);
-        free(entry_items);
 
     }
     else {
