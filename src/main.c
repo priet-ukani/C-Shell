@@ -63,6 +63,7 @@ int main()
 
         fopen(file_open_path, "w");
         // fopen("/home/prietukani/Desktop/Codes/Coding/Sem 3/OSN/C Shell/C-Shell/src/pastevents.txt", "w");
+        
         for (int i = 0; i < 15; i++)
         {
             fprintf(fp, "%s", past_events[i]);
