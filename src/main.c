@@ -25,6 +25,9 @@ int main()
             perror("Error");
             exit(0);
         }
+        char *line = NULL;
+        size_t len = 0;
+        ssize_t read;
         
 
 
