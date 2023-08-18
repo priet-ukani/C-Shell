@@ -29,10 +29,23 @@ void peek_peek(char*command)
         entries_store[index++]=entries;
     }
     qsort(entries_store, index, sizeof(struct dirent*), compare);
-    for (int i = 0; i < index; i++)
-    {
-        if (entries_store[i]->d_name[0] == '.' && peek_to[0] != '.')
+  for (size_t i = 0; i < ; i++) {
+        const char *entry_name = entry_names[i];
+        struct stat entry_info;
+        if (lstat(entry_name, &entry_info) == -1) {
+            perror("Error getting entry information");
             continue;
-        printf("%s\n", entries_store[i]->d_name);
+        }
+
+        if (S_ISDIR(entry_info.st_mode)) {
+            printf(COLOR_DIRECTORY "%s\n" COLOR_RESET, entry_name);
+        } else if (entry_info.st_mode & S_IXUSR) {
+            printf(COLOR_EXECUTABLE "%s\n" COLOR_RESET, entry_name);
+        } else {
+            printf("%s\n", entry_name);
+        }
+
+        free(entry_names[i]);
     }
+    free(entry_names);
 }
