@@ -32,7 +32,10 @@ void peek_peek(char*command)
     ignore_start=0;
     flags_check(peek_to);
     // printf("Flag_A: %d, Flag_L: %d\n", flag_a,flag_l);
+    // remove the first ignore_start characters from the peek_to path 
     
+
+
     char *dir_path = (strlen(peek_to) > 0) ? peek_to : ".";
     
     DIR *dir = opendir(dir_path);
