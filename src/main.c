@@ -13,7 +13,7 @@
 
 char **past_events;
 char* file_open_path;
-
+char *input;
 
 void write_to_file()
 {
