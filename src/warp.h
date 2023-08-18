@@ -14,8 +14,8 @@
 #include <dirent.h>
 
 void minus();
-void tilda();
-void warp_warp(char *command);
+int tilda();
+int warp_warp(char *command);
 
 
 #endif
