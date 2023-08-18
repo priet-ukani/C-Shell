@@ -56,7 +56,6 @@ int main()
     // This gets the current working directory
     
     char *line = NULL;
-    char **past_events=(char**)malloc(sizeof(char*)*17);
     for (int i = 0; i < 17; i++)
     {
         past_events[i]=(char*)malloc(sizeof(char)*1024);
