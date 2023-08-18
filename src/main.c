@@ -62,6 +62,7 @@ int main()
             strcat(input,"\n");
         for (int i = 0; i < 15; i++)
         {
+            
             if(strcmp(input,past_events[i])==0)
             {
                 already_exists=!already_exists;
