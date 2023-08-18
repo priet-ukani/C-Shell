@@ -17,6 +17,9 @@ int main()
     // This gets the current working directory
     while (1)
     {
+
+
+        
         display_user_prompt_function(parent_directory);
 
         char *input=(char*)malloc(4096*sizeof(char));
