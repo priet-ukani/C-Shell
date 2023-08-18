@@ -60,6 +60,46 @@ void print_directory_contents(char *path) {
 
         closedir(dir);
 
+    } else {
+        perror("Error opening directory");    
+    }
+}
+
+
+
+void peek_peek(char *command)
+{
+    // peek works as ls command to list all files and folders
+    char *peek_to = substr(command, 5, strlen(command) - 5);
+
+    flag_a = false;
+    flag_l = false;
+    ignore_start = 0;
+    // flags_check(peek_to);
+    // printf("Flag_A: %d, Flag_L: %d\n", flag_a,flag_l);
+    // remove the first ignore_start characters from the peek_to path
+    char *dir_path=(char*)malloc(sizeof(1024*sizeof(char)));
+    dir_path = substr(peek_to, ignore_start, strlen(peek_to) - ignore_start);
+    // printf("%d<- len, path-> %s\n", strlen(peek_to), peek_to);
+    char *path=(char*)malloc(1024*sizeof(char));
+    path=dir_path;
+    printf("%s", path);
+    path[strcspn(path, "\n")] = '\0';  // Remove the newline character
+    // Check if the path is relative, and if so, make it absolute
+    if (path[0] != '/' && path[0] != '\\') {
+        char current_dir[256];
+        if (getcwd(current_dir, sizeof(current_dir)) != NULL) {
+            strcat(current_dir, "/");
+            strcat(current_dir, path);
+            strcpy(path, current_dir);
+        }
+    }
+
+    print_directory_contents(path);
+}
+
+
+
      //     // Read directory entries and store names in an array
     //     struct dirent *entry;
     //     size_t entry_count = 0;
@@ -126,42 +166,5 @@ void print_directory_contents(char *path) {
     //     free(entry_names[i]);
     // }
     //     free(entry_names);
-    }
     
-    } else {
-        perror("Error opening directory");    
-    }
-}
-
-
-
-void peek_peek(char *command)
-{
-    // peek works as ls command to list all files and folders
-    char *peek_to = substr(command, 5, strlen(command) - 5);
-
-    flag_a = false;
-    flag_l = false;
-    ignore_start = 0;
-    // flags_check(peek_to);
-    // printf("Flag_A: %d, Flag_L: %d\n", flag_a,flag_l);
-    // remove the first ignore_start characters from the peek_to path
-    char *dir_path=(char*)malloc(sizeof(1024*sizeof(char)));
-    dir_path = substr(peek_to, ignore_start, strlen(peek_to) - ignore_start);
-    // printf("%d<- len, path-> %s\n", strlen(peek_to), peek_to);
-    char *path=(char*)malloc(1024*sizeof(char));
-    path=dir_path;
-    printf("%s", path);
-    path[strcspn(path, "\n")] = '\0';  // Remove the newline character
-    // Check if the path is relative, and if so, make it absolute
-    if (path[0] != '/' && path[0] != '\\') {
-        char current_dir[256];
-        if (getcwd(current_dir, sizeof(current_dir)) != NULL) {
-            strcat(current_dir, "/");
-            strcat(current_dir, path);
-            strcpy(path, current_dir);
-        }
-    }
-
-    print_directory_contents(path);
-}
+    
