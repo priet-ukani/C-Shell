@@ -137,9 +137,9 @@ void peek_peek(char *command)
     flags_check(peek_to);
     // printf("Flag_A: %d, Flag_L: %d\n", flag_a,flag_l);
     // remove the first ignore_start characters from the peek_to path
-    char *dir_path;
+    char *dir_path=(char*)malloc(sizeof(1024*sizeof(char)));
     dir_path = substr(peek_to, ignore_start, strlen(peek_to) - ignore_start);
-
+    path=dir_path;
     // printf("%d<- len, path-> %s\n", strlen(peek_to), peek_to);
     char *path=(char*)malloc(1024*sizeof(char));
     path=peek_to;
