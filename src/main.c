@@ -54,7 +54,7 @@ int main()
             i++;
         }
         
-        for (int i = 0; i >= 0; i++)
+        for (int i = 14; i >= 0; i++)
         {
             
         }
