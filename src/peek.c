@@ -29,6 +29,7 @@ void peek_peek(char*command)
 
     flag_a=false;
     flag_l=false;
+    ignore_start=0;
     flags_check(peek_to);
     // printf("Flag_A: %d, Flag_L: %d\n", flag_a,flag_l);
     
