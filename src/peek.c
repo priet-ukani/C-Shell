@@ -30,7 +30,7 @@ void peek_peek(char*command)
 
     char *dir_path = (strlen(peek_to) > 0) ? peek_to : ".";
    
-       DIR *dir = opendir(dir_path);
+    DIR *dir = opendir(dir_path);
     if (dir == NULL) {
         perror("Error opening directory");
         return;
