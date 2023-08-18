@@ -32,8 +32,8 @@ int main()
             past_events[i]=(char*)malloc(sizeof(char)*1024);
         }
         // read all 15 commands from pastevents.txt 
-        
 
+        OK BRO 
 
 
         display_user_prompt_function(parent_directory);
