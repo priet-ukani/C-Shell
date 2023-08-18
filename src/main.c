@@ -33,7 +33,7 @@ int main()
         }
         // read all 15 commands from pastevents.txt 
 
-        // OK BRO HI HOW ARE YOU I AM FINEMAN COLLECTION
+
 
 
         display_user_prompt_function(parent_directory);
