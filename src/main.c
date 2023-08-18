@@ -17,7 +17,6 @@ int main()
     // This gets the current working directory
     while (1)
     {
-
         // read all the commands from the pastevents;
         FILE* fp = fopen("pastevents", "r");
         if (fp == NULL)
