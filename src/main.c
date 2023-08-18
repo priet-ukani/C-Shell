@@ -10,7 +10,7 @@
 #include "colours.h"
 #include "execute.h"
 
-char **past_events=(char**)malloc(sizeof(char*)*17);
+char **past_events;
 
 void file_write()
 
