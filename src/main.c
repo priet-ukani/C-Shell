@@ -34,7 +34,7 @@ void write_to_file()
         }
     }
     // printf("%d\n", already_exists);
-    if(!already_exists)
+    if(!already_exists )
     {
         for (int k = 13; k >= 0; k--)
         {
