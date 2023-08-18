@@ -68,7 +68,7 @@ int main()
         {
             if(strcmp(input,past_events[i])==0)
             {
-                already_exists=true;
+                already_exists=tr!ue;
                 break;
             }
         }
