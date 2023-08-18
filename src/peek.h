@@ -16,7 +16,7 @@
 
 #define COLOR_DIRECTORY BLUE  // Blue
 #define COLOR_EXECUTABLE "\x1B[32m" // Green
-
+#define COLOR_FILES WHITE
 
 int compare(const void*a, const void*b);
 void peek_peek(char *command);
