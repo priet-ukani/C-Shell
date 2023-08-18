@@ -16,7 +16,7 @@ void peek_peek(char*command)
 
     char* temp2=substr(peek_to,0,2);
     if(strcmp(temp2, "-l")==0) flag_l=true;
-    elif
+    else if(strcmp(temp2, "-a"))
     char *dir_path = (strlen(peek_to) > 0) ? peek_to : ".";
    
        DIR *dir = opendir(dir_path);
