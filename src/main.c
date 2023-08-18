@@ -11,6 +11,8 @@
 #include "execute.h"
 
 
+
+
 int main()
 {
     char *parent_directory = getcwd(NULL, 0); 
@@ -64,42 +66,7 @@ int main()
 
 
 
-                fopen(file_open_path, "w");
-        // fopen("/home/prietukani/Desktop/Codes/Coding/Sem 3/OSN/C Shell/C-Shell/src/pastevents.txt", "w");
         
-        bool already_exists=false;
-        if(input[strlen(input)-1]!='\n')
-            strcat(input,"\n");
-        for (int i = 0; i < 15; i++)
-        {
-            input=remove_extra_spaces_and_tabs(input);
-            past_events[i]=remove_extra_spaces_and_tabs(past_events[i]);
-            if(strcmp(input,past_events[i])==0)
-            {
-                already_exists=!already_exists;
-                break;
-            }
-        }
-        // printf("%d\n", already_exists);
-        if(!already_exists)
-        {
-            for (int k = 13; k >= 0; k--)
-            {
-                // past_events[k+1]=past_events[k];
-                strcpy(past_events[k+1],past_events[k]);
-            }
-            // past_events[0]=input;
-            strcpy(past_events[0],input);
-        }
-        for (int i = 0; i < 15; i++)
-        {
-            fprintf(fp, "%s", past_events[i]);
-            if(past_events[i][strlen(past_events[i])-1]!='\n')
-            {
-                fprintf(fp, "\n");
-            }
-        }
-        fclose(fp);
     }
     return 0;
 }
