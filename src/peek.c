@@ -53,16 +53,13 @@ void flags_check(char *peek_to)
 void print_directory_contents(char *path) {
     DIR *dir = opendir(path);
     if (dir) {
-                printf("Contents of directory: %s\n", path);
-        printf("==============================\n");
-
         struct dirent *entry;
         while ((entry = readdir(dir)) != NULL) {
             printf("%s\n", entry->d_name);
         }
 
         closedir(dir);
-   {
+
      //     // Read directory entries and store names in an array
     //     struct dirent *entry;
     //     size_t entry_count = 0;
