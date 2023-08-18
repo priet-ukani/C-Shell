@@ -63,7 +63,31 @@ void print_directory_contents(char *path) {
         }
         qsort(entry_items, entry_count, sizeof(char *), compare_entries);
 
-     
+                for (int i = 0; i < entry_count; i++) {
+            char *entry_name = entry_items[i];
+            const char *color = NULL;
+
+            if (is_executable(entry_name)) {
+                color = "\x1b[32m"; // Green color for executables
+            } else {
+                color = "\x1b[34m"; // Blue color for files
+            }
+
+            if (entry_name[0] == '.') {
+                color = "\x1b[90m"; // Gray color for hidden files/dirs
+            }
+
+            if (entry_name[strlen(entry_name) - 1] == '/') {
+                color = "\x1b[36m"; // Cyan color for directories
+            }
+
+            print_colored(entry_name, color);
+            printf("\n");
+            free(entry_name);
+        }
+
+        closedir(dir);
+        free(entry_items);
 
     }
     else {
