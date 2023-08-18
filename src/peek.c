@@ -120,7 +120,9 @@ void print_directory_contents(char *path) {
     }
         free(entry_names);
     } else {
-
+    if (dir == NULL
+        perror("Error opening directory");
+    
     }
 }
 
@@ -163,9 +165,5 @@ void peek_peek(char *command)
     dir_path=path;
 
     DIR *dir = opendir(dir_path);
-    if (dir == NULL)
-    {
-        perror("Error opening directory");
-        return;
-    }
+
 }
