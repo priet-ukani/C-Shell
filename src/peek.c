@@ -16,8 +16,8 @@ void flags_check(char* peek_to)
     char* temp3=substr(peek_to,0,3);
     if(strcmp(temp2, "-l")==0){ flag_l=true; ignore_start+=2;}
     else if(strcmp(temp2, "-a")==0){ flag_a=true; ignore_start+=2;}
-    if(strcmp(temp2_2, "-l")==0){ flag_l=true;  ignore_start+=2;}
-    else if(strcmp(temp2_2, "-a")==0){ flag_a=true;  ignore_start+=2;}
+    if(strcmp(temp2_2, "-l")==0){ flag_l=true;  ignore_start+=3;}
+    else if(strcmp(temp2_2, "-a")==0){ flag_a=true;  ignore_start+=3;}
     if(strcmp(temp3, "-la")==0){ flag_l=flag_a=true;  ignore_start+=3;}
     else if(strcmp(temp3, "-al")==0){ flag_l=flag_a=true;  ignore_start+=3;}
 }
