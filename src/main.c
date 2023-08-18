@@ -53,13 +53,6 @@ int main()
         input=remove_extra_spaces_and_tabs(input);
         struct commands*ok=split_commands(input);
         
-        for (int k = 13; k >= 0; k--)
-        {
-            // past_events[k+1]=past_events[k];
-            strcpy(past_events[k+1],past_events[k]);
-        }
-        // past_events[0]=input;
-        strcpy(past_events[0],input);
 
         fopen(file_open_path, "w");
         // fopen("/home/prietukani/Desktop/Codes/Coding/Sem 3/OSN/C Shell/C-Shell/src/pastevents.txt", "w");
@@ -72,6 +65,13 @@ int main()
                 break;
             }
         }
+        for (int k = 13; k >= 0; k--)
+        {
+            // past_events[k+1]=past_events[k];
+            strcpy(past_events[k+1],past_events[k]);
+        }
+        // past_events[0]=input;
+        strcpy(past_events[0],input);
         for (int i = 0; i < 15; i++)
         {
             fprintf(fp, "%s", past_events[i]);
