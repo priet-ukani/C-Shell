@@ -15,6 +15,6 @@
 #include "colours.h"
 #include "extra_functions.h"
 
-void pastevents();
+void pastevents_function();
 
 #endif
