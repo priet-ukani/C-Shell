@@ -31,16 +31,35 @@ void peek_peek(char*command)
     flag_l=false;
     ignore_start=0;
     flags_check(peek_to);
-    printf("Flag_A: %d, Flag_L: %d\n", flag_a,flag_l);
+    // printf("Flag_A: %d, Flag_L: %d\n", flag_a,flag_l);
     // remove the first ignore_start characters from the peek_to path 
     peek_to=substr(peek_to,ignore_start,strlen(peek_to)-ignore_start);
 
-    printf("%d<- len, path-> %s\n", strlen(peek_to), peek_to);
+    // printf("%d<- len, path-> %s\n", strlen(peek_to), peek_to);
     char *dir_path ;
     // = (strlen(peek_to) > 0) ? peek_to : ".";
-    if(strcmp(peek_to, " ")) peek_to = ".";
-    
-    
+        if (strlen(peek_to) > 0) {
+        // If peek_to is a relative path, prepend the current working directory
+        if (peek_to[0] != '/') {
+            char cwd[PATH_MAX];
+            if (getcwd(cwd, sizeof(cwd)) != NULL) {
+                dir_path = (char *)malloc(strlen(cwd) + strlen(peek_to) + 2);
+                if (dir_path != NULL) {
+                    sprintf(dir_path, "%s/%s", cwd, peek_to);
+                } else {
+                    perror("Memory allocation error");
+                    return;
+                }
+            } else {
+                perror("Error getting current working directory");
+                return;
+            }
+        } else {
+            dir_path = strdup(peek_to);
+        }
+    } else {
+        dir_path = strdup(".");
+    }
 
     
     DIR *dir = opendir(dir_path);
@@ -106,5 +125,3 @@ void peek_peek(char*command)
     }
     free(entry_names);
 }
-
-
