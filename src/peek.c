@@ -71,11 +71,11 @@ void print_directory_contents(char *path) {
             if (entry_name[0] == '.') {
                 printf(COLOR_DIRECTORY);
             } else if (entry_name[strlen(entry_name) - 1] == '*') {
-                printf(COLOR_GREEN);
+                printf(COLOR_EXECUTABLE);
             } else if (entry_name[strlen(entry_name) - 1] == '/') {
-                printf(CLOR);
+                printf(COLOR_DIRECTORY);
             } else if (entry_name[strlen(entry_name) - 1] == '%') {
-                printf(COLOR_MAGENTA);
+                printf(COLOR_EXECUTABLE);
             }
 
             printf("%s\n", entry_name);
