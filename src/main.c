@@ -10,6 +10,11 @@
 #include "colours.h"
 #include "execute.h"
 
+
+char **past_events=(char**)malloc(sizeof(char*)*17);
+
+
+
 void write_to_file()
 {
             fopen(file_open_path, "w");
