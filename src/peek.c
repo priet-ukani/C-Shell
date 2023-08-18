@@ -63,27 +63,28 @@ void print_directory_contents(char *path) {
         }
         qsort(entry_items, entry_count, sizeof(char *), compare_entries);
 
-        // for (int i = 0; i < entry_count; i++) {
-        //     char *entry_name = entry_items[i];
-        //     printf(COLOR_RESET);  // Reset color before each entry
+        for (int i = 0; i < entry_count; i++) {
+            char *entry_name = entry_items[i];
+            printf(COLOR_RESET);  // Reset color before each entry
 
-        //     // Determine color based on the entry type
-        //     if (entry_name[0] == '.') {
-        //         printf(COLOR_DIRECTORY);
-        //     } else if (entry_name[strlen(entry_name) - 1] == '*') {
-        //         printf(COLOR_EXECUTABLE);
-        //     } else if (entry_name[strlen(entry_name) - 1] == '/') {
-        //         printf(COLOR_DIRECTORY);
-        //     } else if (entry_name[strlen(entry_name) - 1] == '%') {
-        //         printf(COLOR_EXECUTABLE);
-        //     }
+            // Determine color based on the entry type
+            if (entry_name[0] == '.') {
+                printf(COLOR_DIRECTORY);
+            } else if (entry_name[strlen(entry_name) - 1] == '*') {
+                printf(COLOR_EXECUTABLE);
+            } else if (entry_name[strlen(entry_name) - 1] == '/') {
+                printf(COLOR_DIRECTORY);
+            } else if (entry_name[strlen(entry_name) - 1] == '%') {
+                printf(COLOR_EXECUTABLE);
+            }
 
-        //     printf("%s\n", entry_name);
-        //     free(entry_name);
-        // }
+            printf("%s\n", entry_name);
+            free(entry_name);
+        }
         closedir(dir);
 
-    } else {
+    }
+    else {
         perror("Error opening directory");    
     }
 }
