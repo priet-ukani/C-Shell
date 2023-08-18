@@ -12,7 +12,7 @@
 
 
 char **past_events;
-
+char* file_open_path;
 
 
 void write_to_file()
