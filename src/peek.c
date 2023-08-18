@@ -45,7 +45,7 @@ void peek_peek(char*command)
             printf("%s\n", entry_name);
         }
 
-        free(entries[i]);
+        free(entries_store[i]);
     }
     free(entries);
 }
