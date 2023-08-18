@@ -99,11 +99,12 @@ int main()
 
 
         int i=0;
+        int success=0;
         while(ok[i].command!=NULL)
         {
             ok[i].command=remove_extra_spaces_and_tabs(ok[i].command);
             // printf("%s %d\n", ok[i].command, ok[i].print_pid_and_background);
-            success = execute_function(ok[i]);
+            success |= execute_function(ok[i]);
             i++;
         }
     }
