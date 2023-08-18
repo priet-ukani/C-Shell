@@ -15,7 +15,7 @@ char **past_events;
 char* file_open_path;
 char *input;
 
-void write_to_file()
+void write_to_file(int success)
 {
     FILE* f = fopen(file_open_path, "w");
     // fopen("/home/prietukani/Desktop/Codes/Coding/Sem 3/OSN/C Shell/C-Shell/src/pastevents.txt", "w");
@@ -34,7 +34,7 @@ void write_to_file()
         }
     }
     // printf("%d\n", already_exists);
-    if(!already_exists )
+    if(!already_exists && )
     {
         for (int k = 13; k >= 0; k--)
         {
