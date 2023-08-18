@@ -35,7 +35,7 @@ void peek_peek(char*command)
     // remove the first ignore_start characters from the peek_to path 
     peek_to=substr(peek_to,ignore_start,strlen(peek_to)-ignore_start);
 
-    printf("%d %s\n", strlen(peek_to));
+    printf("%d<- len, path-> %s\n", strlen(peek_to), peek_to);
     char *dir_path = (strlen(peek_to) > 0) ? peek_to : ".";
     
     DIR *dir = opendir(dir_path);
