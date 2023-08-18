@@ -34,10 +34,10 @@ char** separate_by_delimeter(char*str, char* delimeter)
         ans[index++]=token;
     }
     return ans;
-    
+
 }
 
-void execute_function(struct commands command1)
+int execute_function(struct commands command1)
 {
     char* command=command1.command;
     bool print_pid_and_background=command1.print_pid_and_background;
