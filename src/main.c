@@ -18,8 +18,16 @@ int main()
     while (1)
     {
 
-
+        // read all the commands from the pastevents;
+        FILE* fp = fopen("pastevents", "r");
+        if (fp == NULL)
+        {
+            perror("Error");
+            exit(0);
+        }
         
+
+
         display_user_prompt_function(parent_directory);
 
         char *input=(char*)malloc(4096*sizeof(char));
