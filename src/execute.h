@@ -16,6 +16,6 @@
 
 char*substr(char*str,int start,int len);
 char** separate_by_delimeter(char*str, char* delimeter);
-void execute_function(struct commands command1);
+int execute_function(struct commands command1);
 
 #endif
