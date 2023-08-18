@@ -17,6 +17,7 @@
 #define COLOR_DIRECTORY BLUE  
 #define COLOR_EXECUTABLE GREEN 
 #define COLOR_FILES WHITE
+#define COLOR_RESET RESET
 
 int compare(const void*a, const void*b);
 void peek_peek(char *command);
