@@ -74,8 +74,9 @@ int warp_warp(char *command)
         if(return_code==-1)
         {
             perror(RED"Error"RESET);
+            return 0;
         }
         i++;
     }
-    return;
+    return 1;
 }
