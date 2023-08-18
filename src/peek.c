@@ -53,7 +53,8 @@ void flags_check(char *peek_to)
 void print_directory_contents(char *path) {
     DIR *dir = opendir(path);
     if (dir) {
-    //     // Read directory entries and store names in an array
+   {
+     //     // Read directory entries and store names in an array
     //     struct dirent *entry;
     //     size_t entry_count = 0;
     //     char **entry_names = NULL;
@@ -119,6 +120,7 @@ void print_directory_contents(char *path) {
     //     free(entry_names[i]);
     // }
     //     free(entry_names);
+    }
     } else {
         perror("Error opening directory");    
     }
