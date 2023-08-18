@@ -14,6 +14,9 @@
 #include <dirent.h>
 
 
+#define COLOR_DIRECTORY "\x1B[34m"  // Blue
+#define COLOR_EXECUTABLE "\x1B[32m" // Green
+
 
 int compare(const void*a, const void*b);
 void peek_peek(char *command);
