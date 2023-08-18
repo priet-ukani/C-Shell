@@ -1,5 +1,8 @@
 warp 
 warp 
+warp 
+warp 
+warp 
 warp .. .. .. 
 warp .. .. 
 warp .. 
@@ -10,6 +13,3 @@ dfv
 v 
 vf 
 fd 
-dfv 
-dfv 
-vdknvnfv 
