@@ -26,7 +26,12 @@ int main()
             exit(0);
         }
         char *line = NULL;
-        char **past_events=(char**)
+        char **past_events=(char**)malloc(sizeof(char*)*15);
+        for (int i = 0; i < 15; i++)
+        {
+            past_events[i]=(char*)malloc(sizeof(char)*1024);
+        }
+        
 
 
 
