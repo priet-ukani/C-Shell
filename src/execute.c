@@ -34,8 +34,7 @@ char** separate_by_delimeter(char*str, char* delimeter)
         ans[index++]=token;
     }
     return ans;
-
-    // ok 
+    
 }
 
 void execute_function(struct commands command1)
