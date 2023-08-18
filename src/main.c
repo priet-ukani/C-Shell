@@ -60,7 +60,7 @@ int main()
         
         for (int i = 0; i < 15; i++)
         {
-            past_events[i]=substr(past_events[i], )
+            past_events[i]=substr(past_events[i], 0, strlen(past_events[i]-1));
             if(strcmp(input,past_events[i])==0)
             {
                 already_exists=!already_exists;
