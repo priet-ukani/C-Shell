@@ -62,7 +62,40 @@ void print_directory_contents(char *path) {
             entry_items[entry_count]=entry->d_name;
         }
         qsort(entry_items, entry_count, sizeof(char *), compare_entries);
-        
+        for (size_t i = 0; i < entry_count; i++)
+        {
+            char *entry_name = entry_items[i];
+            if (entry_name[0] == '.')
+            {
+                // hidden files to be ignored by default
+                if (!flag_a)
+                {
+                    // if not hidden files to be shown then continue;
+                    continue;
+                }
+            }
+            struct stat entry_info;
+            if (lstat(entry_name, &entry_info) == -1)
+            {
+                perror("Error getting entry information");
+                continue;
+            }
+
+            if (S_ISDIR(entry_info.st_mode))
+            {
+                printf(COLOR_DIRECTORY "%s\n" COLOR_RESET, entry_name);
+            }
+            else if (entry_info.st_mode & S_IXUSR)
+            {
+                printf(COLOR_EXECUTABLE "%s\n" COLOR_RESET, entry_name);
+            }
+            else
+            {
+                printf(COLOR_FILES "%s\n" COLOR_RESET, entry_name);
+            }
+
+            free(entry_items[i]);
+        }
 
         closedir(dir);
 
