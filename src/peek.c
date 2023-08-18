@@ -8,7 +8,7 @@ int compare_entries(const void *a, const void *b) {
 
 bool flag_a=false;
 bool flag_l=false;
-
+int 
 void flags_check(char* peek_to)
 {
     char* temp2=substr(peek_to,0,2);
