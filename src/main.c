@@ -32,7 +32,7 @@ int main()
             past_events[i]=(char*)malloc(sizeof(char)*1024);
         }
         // read all 15 commands from pastevents.txt 
-
+        
         display_user_prompt_function(parent_directory);
 
         char *input=(char*)malloc(4096*sizeof(char));
