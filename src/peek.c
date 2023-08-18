@@ -63,6 +63,27 @@ void print_directory_contents(char *path) {
         }
         qsort(entry_items, entry_count, sizeof(char *), compare_entries);
 
+                for (int i = 0; i < entry_count; i++) {
+            char *entry_name = entry_items[i];
+            printf(COLOR_RESET);  // Reset color before each entry
+
+            // Determine color based on the entry type
+            if (entry_name[0] == '.') {
+                printf(COLOR_BLUE);
+            } else if (entry_name[strlen(entry_name) - 1] == '*') {
+                printf(COLOR_GREEN);
+            } else if (entry_name[strlen(entry_name) - 1] == '/') {
+                printf(COLOR_CYAN);
+            } else if (entry_name[strlen(entry_name) - 1] == '%') {
+                printf(COLOR_MAGENTA);
+            }
+
+            printf("%s\n", entry_name);
+            free(entry_name);
+        }
+
+        closedir(dir);
+
         closedir(dir);
 
     } else {
