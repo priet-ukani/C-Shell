@@ -19,7 +19,7 @@ void tilda()
     return;
 }
 
-void minus()
+int minus()
 {
     // this moves the cwd to the previous path 
     char *temp=getcwd(NULL,0);
@@ -34,7 +34,7 @@ void minus()
 }
 
 
-void warp_warp(char *command)
+int warp_warp(char *command)
 {
     if(first_time_warp)
     {
