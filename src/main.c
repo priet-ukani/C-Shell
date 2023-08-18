@@ -10,19 +10,14 @@
 #include "colours.h"
 #include "execute.h"
 
-char **past_events;
-
-void file_write(char *input, int success)
-{
-    
-}
 
 int main()
 {
     char *parent_directory = getcwd(NULL, 0); 
     // This gets the current working directory
-    past_events=(char**)malloc(sizeof(char*)*17);
+    
     char *line = NULL;
+    char **past_events=(char**)malloc(sizeof(char*)*17);
     for (int i = 0; i < 17; i++)
     {
         past_events[i]=(char*)malloc(sizeof(char)*1024);
@@ -58,6 +53,8 @@ int main()
         input=remove_extra_spaces_and_tabs(input);
         struct commands*ok=split_commands(input);
         
+
+
         int i=0;
         while(ok[i].command!=NULL)
         {
@@ -66,10 +63,6 @@ int main()
             int sucess = execute_function(ok[i]);
             i++;
         }
-
-
-
-        
     }
     return 0;
 }
