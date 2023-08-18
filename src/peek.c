@@ -121,6 +121,7 @@ void print_directory_contents(char *path) {
     // }
     //     free(entry_names);
     }
+    
     } else {
         perror("Error opening directory");    
     }
