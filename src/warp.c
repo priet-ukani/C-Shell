@@ -51,7 +51,7 @@ int warp_warp(char *command)
     int i=0;
     if(tokens[0]==NULL || tokens[0]=="")
     {
-        tilda();
+        return tilda();
     }
     while(tokens[i]!=NULL)
     {
