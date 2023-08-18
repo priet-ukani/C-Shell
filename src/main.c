@@ -43,7 +43,7 @@ int main()
         char *input=(char*)malloc(4096*sizeof(char));
         fgets(input,4096,stdin);
         // This takes the input from the user
-
+        
         struct commands*ok=split_commands(input);
         int i=0;
         while(ok[i].command!=NULL)
