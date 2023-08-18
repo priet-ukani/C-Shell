@@ -59,7 +59,7 @@ int main()
             past_events[i+1]=past_events[i];
         }
         past_events[i]=input;
-        File* fp_new=fopen("pastevents", "w");
+        fp=fopen("pastevents", "w");
         for (int i = 0; i < 15; i++)
         {
             fprintf(fp_new, "%s", past_events[i]);
