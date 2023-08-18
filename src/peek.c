@@ -59,7 +59,7 @@ void print_directory_contents(char *path) {
         int entry_count=0;
         while ((entry = readdir(dir)) != NULL) {
             printf("%s\n", entry->d_name);
-            entry_items[entry_count]=entry->d_name;
+            entry_items[entry_count++]=entry->d_name;
         }
         qsort(entry_items, entry_count, sizeof(char *), compare_entries);
         
