@@ -95,7 +95,7 @@ int main()
         {
             ok[i].command=remove_extra_spaces_and_tabs(ok[i].command);
             // printf("%s %d\n", ok[i].command, ok[i].print_pid_and_background);
-            execute_function(ok[i]);
+            int sucess = execute_function(ok[i]);
             i++;
         }
     }
