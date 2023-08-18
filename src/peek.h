@@ -15,7 +15,7 @@
 #define COLOR_RESET RESET
 
 int compare(const void*a, const void*b);
-void peek_peek(char *command);
+int peek_peek(char *command);
 
 
 #endif
