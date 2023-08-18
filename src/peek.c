@@ -1,7 +1,6 @@
 #include "execute.h"
 #include "extra_functions.h"
 #include "peek.h"
-#include "colours.h"
 
 int compare(const void*a, const void*b)
 {
