@@ -15,7 +15,7 @@ void peek_peek(char*command)
        DIR *dir = opendir(dir_path);
     if (dir == NULL) {
         perror("Error opening directory");
-        return EXIT_FAILURE;
+        return;
     }
 
     // Read directory entries and store names in an array
