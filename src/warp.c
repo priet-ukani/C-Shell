@@ -30,8 +30,9 @@ int minus()
     if (return_code==-1)
     {
         perror(RED"Error"RESET);
+        return 0;
     }
-    return;
+    return 1;
 }
 
 
