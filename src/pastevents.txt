@@ -1,3 +1,10 @@
+ 
+
+
+
+
+
+warp 
 warp 
 fwa 
 fw 
@@ -6,11 +13,3 @@ w
 a faf 
 af a f 
 wafwa fw 
-f 
-ff aw 
-wa fa fa 
-aw f 
-a f 
-wf 
-f w 
-wa
