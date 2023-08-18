@@ -40,11 +40,14 @@ void peek_peek(char*command)
     // = (strlen(peek_to) > 0) ? peek_to : ".";
         if (strlen(peek_to) > 0) {
         // If peek_to is a relative path, prepend the current working directory
-        if (peek_to[0] != '/') {
-            
-        } else {
-            dir_path = strdup(peek_to);
+            if (path[0] != '/' && path[0] != '\\') {
+        char current_dir[256];
+        if (getcwd(current_dir, sizeof(current_dir)) != NULL) {
+            strcat(current_dir, "/");
+            strcat(current_dir, path);
+            strcpy(path, current_dir);
         }
+    }
     } else {
         dir_path = strdup(".");
     }
