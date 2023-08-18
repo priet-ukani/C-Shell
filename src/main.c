@@ -11,7 +11,7 @@
 #include "execute.h"
 
 
-
+void file_write()
 
 int main()
 {
