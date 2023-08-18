@@ -14,7 +14,7 @@
 
 // struct commands *split_commands(char *input_str);
 
-
+char *remove_trailing_and_
 
 char *remove_extra_spaces_and_tabs(char *input_str)
 {
