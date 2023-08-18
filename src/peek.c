@@ -142,26 +142,17 @@ void peek_peek(char *command)
     // printf("%d<- len, path-> %s\n", strlen(peek_to), peek_to);
     char *dir_path;
     char *path;
-    // = (strlen(peek_to) > 0) ? peek_to : ".";
-    if (strlen(peek_to) > 0)
-    {
-        if (path[0] != '/' && path[0] != '\\')
-        {
-            char current_dir[256];
-            if (getcwd(current_dir, sizeof(current_dir)) != NULL)
-            {
-                strcat(current_dir, "/");
-                strcat(current_dir, path);
-                strcpy(path, current_dir);
-            }
+
+    path[strcspn(path, "\n")] = '\0';  // Remove the newline character
+    // Check if the path is relative, and if so, make it absolute
+    if (path[0] != '/' && path[0] != '\\') {
+        char current_dir[256];
+        if (getcwd(current_dir, sizeof(current_dir)) != NULL) {
+            strcat(current_dir, "/");
+            strcat(current_dir, path);
+            strcpy(path, current_dir);
         }
     }
-    else
-    {
-        path = strdup(".");
-    }
-    dir_path=path;
 
-    DIR *dir = opendir(dir_path);
-
+    print_directory_contents(path);
 }
