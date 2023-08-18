@@ -29,7 +29,7 @@ void peek_peek(char*command)
 
     flag_a=false;
     flag_l=false;
-    flags_check(peek_to, &flag_a, &flag_l);
+    flags_check(peek_to);
     printf("Flag_A: %d, Flag_L: %d\n", flag_a,flag_l);
     char *dir_path = (strlen(peek_to) > 0) ? peek_to : ".";
     
