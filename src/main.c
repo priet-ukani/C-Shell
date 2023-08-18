@@ -53,6 +53,7 @@ int main()
             execute_function(ok[i]);
             i++;
         }
+        
     }
     return 0;
 }
