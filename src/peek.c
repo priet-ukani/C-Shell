@@ -48,7 +48,11 @@ void peek_peek(char*command)
     // Print sorted entry names
     for (size_t i = 0; i < entry_count; i++) {
         const char *entry_name = entry_names[i];
-        
+        if(entry_name[i]=='.')
+        {
+            // hidden files to be ignored by default 
+            continue;
+        }
         struct stat entry_info;
         if (lstat(entry_name, &entry_info) == -1) {
             perror("Error getting entry information");
