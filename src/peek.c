@@ -28,13 +28,13 @@ void peek_peek(char*command)
         if (entry_names == NULL) {
             perror("Memory allocation error");
             closedir(dir);
-            return 0;
+            return;
         }
         entry_names[entry_count] = strdup(entry->d_name);
         if (entry_names[entry_count] == NULL) {
             perror("Memory allocation error");
             closedir(dir);
-            return 0;
+            return;
         }
         entry_count++;
     }
