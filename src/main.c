@@ -34,7 +34,7 @@ int main()
         // read all 15 commands from pastevents.txt 
         for (int i = 0; i < 15; i++)
         {
-            fgets()
+            fgets(past_events[i], 1024, )
         }
         
         display_user_prompt_function(parent_directory);
