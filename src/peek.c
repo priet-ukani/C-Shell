@@ -2,11 +2,8 @@
 #include "extra_functions.h"
 #include "peek.h"
 
-int compare(const void*a, const void*b)
-{
-    struct dirent* a1=*(struct dirent**)a;
-    struct dirent* b1=*(struct dirent**)b;
-    return strcmp(a1->d_name, b1->d_name);
+int compare_entries(const void *a, const void *b) {
+    return strcmp(*(const char **)a, *(const char **)b);
 }
 
 void peek_peek(char*command)
