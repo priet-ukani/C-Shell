@@ -143,7 +143,7 @@ void peek_peek(char *command)
     char *dir_path;
     char *path=(char*)malloc(1024*sizeof(char));
     path=peek_to;
-    
+    printf("%s", path);
     path[strcspn(path, "\n")] = '\0';  // Remove the newline character
     // Check if the path is relative, and if so, make it absolute
     if (path[0] != '/' && path[0] != '\\') {
