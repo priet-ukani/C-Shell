@@ -55,10 +55,11 @@ void print_directory_contents(char *path) {
     if (dir) {
         struct dirent *entry;
         char **entry_items;
-        entry_items=(char**)malloc(sizeof(char*))
+        entry_items=(char**)malloc(sizeof(char*)*1024);
+        int entry_count=0;
         while ((entry = readdir(dir)) != NULL) {
             // printf("%s\n", entry->d_name);
-
+            
         }
 
         closedir(dir);
