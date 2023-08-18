@@ -1,6 +1,7 @@
 #ifndef PEEK_H
 #define PEEK_H
 
+#include "colours.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
