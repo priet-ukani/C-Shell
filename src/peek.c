@@ -69,7 +69,7 @@ void print_directory_contents(char *path) {
 
             // Determine color based on the entry type
             if (entry_name[0] == '.') {
-                printf(COLOR_BLUE);
+                printf(COLOR);
             } else if (entry_name[strlen(entry_name) - 1] == '*') {
                 printf(COLOR_GREEN);
             } else if (entry_name[strlen(entry_name) - 1] == '/') {
