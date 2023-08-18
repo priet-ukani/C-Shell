@@ -1,15 +1,15 @@
+b 
+bsd 
+bs 
+vs 
+ 
+ 
+ 
+ 
+d 
+sv 
  
 dsv 
  
 vsv 
 d 
-s 
-dsv 
-v 
- 
-d 
-v 
-d 
-v 
-warfd 
-warp  
