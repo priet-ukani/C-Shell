@@ -15,6 +15,7 @@
 // struct commands *split_commands(char *input_str);
 
 
+
 char *remove_extra_spaces_and_tabs(char *input_str)
 {
     // This functions cleans the input string to remove extra spaces and tabs to only keep 1 space in between
