@@ -81,9 +81,6 @@ void print_directory_contents(char *path) {
         //     printf("%s\n", entry_name);
         //     free(entry_name);
         // }
-
-        closedir(dir);
-
         closedir(dir);
 
     } else {
