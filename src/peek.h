@@ -14,7 +14,7 @@
 #include <dirent.h>
 
 
-#define COLOR_DIRECTORY "\x1B[34m"  // Blue
+#define COLOR_DIRECTORY BLUE  // Blue
 #define COLOR_EXECUTABLE "\x1B[32m" // Green
 
 
