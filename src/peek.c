@@ -95,6 +95,17 @@ void print_directory_contents(char *path) {
     }
 }
 
+void print_colored(const char *text, const char *color) {
+    printf("%s%s%s", color, text, "\x1b[0m"); // Set color and reset after printing
+}
+
+int is_executable(const char *path) {
+    struct stat st;
+    if (stat(path, &st) == 0) {
+        return (st.st_mode & S_IXUSR) != 0;
+    }
+    return 0;
+}
 
 
 void peek_peek(char *command)
