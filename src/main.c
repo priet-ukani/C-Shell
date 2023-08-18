@@ -56,7 +56,7 @@ int main()
         
         for (int i = 14; i >= 0; i++)
         {
-            
+            past_events[i]
         }
         
     }
