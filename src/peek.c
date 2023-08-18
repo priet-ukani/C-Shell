@@ -37,6 +37,7 @@ void peek_peek(char*command)
 
     // printf("%d<- len, path-> %s\n", strlen(peek_to), peek_to);
     char *dir_path ;
+    char *path ;
     // = (strlen(peek_to) > 0) ? peek_to : ".";
         if (strlen(peek_to) > 0) {
         // If peek_to is a relative path, prepend the current working directory
