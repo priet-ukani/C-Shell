@@ -76,7 +76,7 @@ void print_directory_contents(char *path) {
                 }
             }
             struct stat entry_info;
-            chdir(dir);
+            chdir(path);
             if (lstat(entry_name, &entry_info) == -1)
             {
                 perror("Error getting entry information");
