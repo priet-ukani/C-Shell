@@ -58,7 +58,7 @@ int warp_warp(char *command)
         printf("%s", tokens[i]);
         if(strcmp(tokens[i], "~" ) == 0)
         {
-            tilda();
+            return tilda();
             i++;
             continue;
         }
