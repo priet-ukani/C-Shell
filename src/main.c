@@ -62,6 +62,7 @@ int main()
             strcat(input,"\n");
         for (int i = 0; i < 15; i++)
         {
+            input
             past_events[i]=remove_extra_spaces_and_tabs(past_events[i]);
             if(strcmp(input,past_events[i])==0)
             {
