@@ -63,7 +63,7 @@ void print_directory_contents(char *path) {
             entry_items[entry_count++]=entry->d_name;
         }
         qsort(entry_items, entry_count, sizeof(char *), compare_entries);
-
+        
     }
     else {
         perror("Error opening directory");    
