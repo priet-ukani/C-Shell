@@ -15,8 +15,9 @@ int tilda()
     if(return_code==-1)
     {
         perror(RED"Error"RESET);
+        return 0;
     }
-    return;
+    return 1;
 }
 
 int minus()
