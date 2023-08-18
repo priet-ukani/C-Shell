@@ -90,7 +90,7 @@ int main()
         fclose(fp);
         display_user_prompt_function(parent_directory);
 
-        char *input=(char*)malloc(4096*sizeof(char));
+        input=(char*)malloc(4096*sizeof(char));
         fgets(input,4096,stdin);
         // // This takes the input from the user
         input=remove_extra_spaces_and_tabs(input);
