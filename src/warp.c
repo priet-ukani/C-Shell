@@ -6,7 +6,7 @@ char* shell_call_path;
 char *previous_shell_path;
 bool first_time_warp=true;
 
-void tilda()
+int tilda()
 {
     // this moves the cwd to the default path from where shell is executed 
     previous_shell_path=getcwd(NULL, 0);
