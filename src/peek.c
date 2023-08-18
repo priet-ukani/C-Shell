@@ -59,7 +59,7 @@ void peek_peek(char*command)
         } else if (entry_info.st_mode & S_IXUSR) {
             printf(COLOR_EXECUTABLE "%s\n" COLOR_RESET, entry_name);
         } else {
-            printf("%s\n", entry_name);
+            printf(COLOR"%s\n", entry_name);
         }
 
         free(entry_names[i]);
