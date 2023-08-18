@@ -56,9 +56,9 @@ int main()
         
         for (int i = 14; i >= 0; i++)
         {
-            past_events[i]
+            past_events[i+1]=past_events[i];
         }
-        
+        past_events[i]=input;        
     }
     return 0;
 }
