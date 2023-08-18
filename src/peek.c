@@ -53,66 +53,7 @@ void flags_check(char *peek_to)
 void print_directory_contents(char *path) {
     DIR *dir = opendir(path);
     if (dir) {
-        printf("Contents of directory: %s\n", path);
-        printf("==============================\n");
-
-        struct dirent *entry;
-        while ((entry = readdir(dir)) != NULL) {
-            printf("%s\n", entry->d_name);
-        }
-
-        closedir(dir);
-    } else {
-        printf("Directory not found.\n");
-    }
-}
-
-
-
-void peek_peek(char *command)
-{
-    // peek works as ls command to list all files and folders
-    char *peek_to = substr(command, 5, strlen(command) - 5);
-
-    flag_a = false;
-    flag_l = false;
-    ignore_start = 0;
-    flags_check(peek_to);
-    // printf("Flag_A: %d, Flag_L: %d\n", flag_a,flag_l);
-    // remove the first ignore_start characters from the peek_to path
-    peek_to = substr(peek_to, ignore_start, strlen(peek_to) - ignore_start);
-
-    // printf("%d<- len, path-> %s\n", strlen(peek_to), peek_to);
-    char *dir_path;
-    char *path;
-    // = (strlen(peek_to) > 0) ? peek_to : ".";
-    if (strlen(peek_to) > 0)
-    {
-        if (path[0] != '/' && path[0] != '\\')
-        {
-            char current_dir[256];
-            if (getcwd(current_dir, sizeof(current_dir)) != NULL)
-            {
-                strcat(current_dir, "/");
-                strcat(current_dir, path);
-                strcpy(path, current_dir);
-            }
-        }
-    }
-    else
-    {
-        path = strdup(".");
-    }
-    dir_path=path;
-
-    DIR *dir = opendir(dir_path);
-    if (dir == NULL)
-    {
-        perror("Error opening directory");
-        return;
-    }
-
-    // Read directory entries and store names in an array
+        // Read directory entries and store names in an array
     struct dirent *entry;
     size_t entry_count = 0;
     char **entry_names = NULL;
@@ -178,4 +119,53 @@ void peek_peek(char *command)
         free(entry_names[i]);
     }
     free(entry_names);
+    } else {
+        printf("Directory not found.\n");
+    }
+}
+
+
+
+void peek_peek(char *command)
+{
+    // peek works as ls command to list all files and folders
+    char *peek_to = substr(command, 5, strlen(command) - 5);
+
+    flag_a = false;
+    flag_l = false;
+    ignore_start = 0;
+    flags_check(peek_to);
+    // printf("Flag_A: %d, Flag_L: %d\n", flag_a,flag_l);
+    // remove the first ignore_start characters from the peek_to path
+    peek_to = substr(peek_to, ignore_start, strlen(peek_to) - ignore_start);
+
+    // printf("%d<- len, path-> %s\n", strlen(peek_to), peek_to);
+    char *dir_path;
+    char *path;
+    // = (strlen(peek_to) > 0) ? peek_to : ".";
+    if (strlen(peek_to) > 0)
+    {
+        if (path[0] != '/' && path[0] != '\\')
+        {
+            char current_dir[256];
+            if (getcwd(current_dir, sizeof(current_dir)) != NULL)
+            {
+                strcat(current_dir, "/");
+                strcat(current_dir, path);
+                strcpy(path, current_dir);
+            }
+        }
+    }
+    else
+    {
+        path = strdup(".");
+    }
+    dir_path=path;
+
+    DIR *dir = opendir(dir_path);
+    if (dir == NULL)
+    {
+        perror("Error opening directory");
+        return;
+    }
 }
