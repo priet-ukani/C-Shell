@@ -19,6 +19,7 @@ void peek_peek(char*command)
     {
         perror(RED"Error"RESET);
     }
+    
     struct dirent* entries;
     struct dirent** entries_store;
     entries_store=(struct dirent **)malloc(sizeof(struct dirent*)*1024);
