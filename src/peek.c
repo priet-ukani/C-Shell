@@ -81,8 +81,9 @@ void peek_peek(char *command)
     }
     else
     {
-        dir_path = strdup(".");
+        path = strdup(".");
     }
+    dir_path=path;
 
     DIR *dir = opendir(dir_path);
     if (dir == NULL)
