@@ -75,9 +75,10 @@ void peek_peek(char*command)
             // hidden files to be ignored by default 
             if(!flag_a)
             {
+                // if not hidden files to be shown then continue;
+                continue;
 
             }
-            continue;
         }
         struct stat entry_info;
         if (lstat(entry_name, &entry_info) == -1) {
