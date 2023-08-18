@@ -40,6 +40,30 @@ void peek_peek(char*command)
     // = (strlen(peek_to) > 0) ? peek_to : ".";
     if(strcmp(peek_to, " ")) peek_to = ".";
     
+    //  if (strlen(peek_to) > 0) {
+    //     // If peek_to is a relative path, prepend the current working directory
+    //     if (peek_to[0] != '/') {
+    //         char cwd[PATH_MAX];
+    //         if (getcwd(cwd, sizeof(cwd)) != NULL) {
+    //             dir_path = (char *)malloc(strlen(cwd) + strlen(peek_to) + 2);
+    //             if (dir_path != NULL) {
+    //                 sprintf(dir_path, "%s/%s", cwd, peek_to);
+    //             } else {
+    //                 perror("Memory allocation error");
+    //                 return;
+    //             }
+    //         } else {
+    //             perror("Error getting current working directory");
+    //             return;
+    //         }
+    //     } else {
+    //         dir_path = strdup(peek_to);
+    //     }
+    // } else {
+    //     dir_path = strdup(".");
+    // }
+
+
     
     DIR *dir = opendir(dir_path);
     if (dir == NULL) {
@@ -106,25 +130,3 @@ void peek_peek(char*command)
 }
 
 
-    //  if (strlen(peek_to) > 0) {
-    //     // If peek_to is a relative path, prepend the current working directory
-    //     if (peek_to[0] != '/') {
-    //         char cwd[PATH_MAX];
-    //         if (getcwd(cwd, sizeof(cwd)) != NULL) {
-    //             dir_path = (char *)malloc(strlen(cwd) + strlen(peek_to) + 2);
-    //             if (dir_path != NULL) {
-    //                 sprintf(dir_path, "%s/%s", cwd, peek_to);
-    //             } else {
-    //                 perror("Memory allocation error");
-    //                 return;
-    //             }
-    //         } else {
-    //             perror("Error getting current working directory");
-    //             return;
-    //         }
-    //     } else {
-    //         dir_path = strdup(peek_to);
-    //     }
-    // } else {
-    //     dir_path = strdup(".");
-    // }
