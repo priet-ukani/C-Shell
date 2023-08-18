@@ -70,7 +70,7 @@ int main()
     {
         // // read all the commands from the pastevents;
         FILE* fp;
-        char* file_open_path=(char*)malloc(sizeof(char)*1024);
+        file_open_path=(char*)malloc(sizeof(char)*1024);
         strcpy(file_open_path, parent_directory);
         strcat(file_open_path, "/pastevents.txt");
         // printf("%s", file_open_path);
