@@ -27,8 +27,8 @@ void peek_peek(char*command)
     // peek works as ls command to list all files and folders 
     char* peek_to=substr(command,5,strlen(command)-5);
 
-    bool flag_a=false;
-    bool flag_l=false;
+    flag_a=false;
+    flag_l=false;
     flags_check(peek_to, &flag_a, &flag_l);
     printf("Flag_A: %d, Flag_L: %d\n", flag_a,flag_l);
     char *dir_path = (strlen(peek_to) > 0) ? peek_to : ".";
