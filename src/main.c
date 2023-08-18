@@ -62,7 +62,7 @@ int main()
         fp=fopen("pastevents", "w");
         for (int i = 0; i < 15; i++)
         {
-            fprintf(fp_new, "%s", past_events[i]);
+            fprintf(fp, "%s", past_events[i]);
         }        
     }
     return 0;
