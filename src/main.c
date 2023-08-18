@@ -19,7 +19,6 @@ int main()
     {
 
         // read all the commands from the pastevents;
-        FILE* fp = fopen("pastevents", "r");
         if (fp == NULL)
         {
             perror("Error");
@@ -32,7 +31,7 @@ int main()
             past_events[i]=(char*)malloc(sizeof(char)*1024);
         }
         // read all 15 commands from pastevents.txt 
-        
+
 
         display_user_prompt_function(parent_directory);
 
