@@ -63,5 +63,10 @@ int execute_function(struct commands command1)
     {
         peek_peek(command);
     }
+    else
+    {
+        return 0;
+    }
+    
     
 }
