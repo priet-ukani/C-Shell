@@ -13,6 +13,9 @@ int compare_entries(const void *a, const void *b) {
     return strcmp(*(const char **)a, *(const char **)b);
 }
 
+
+//test.c
+
 int main(int argc, char *argv[]) {
     // Check if a directory path is provided
     const char *dir_path = (argc > 1) ? argv[1] : ".";
