@@ -26,9 +26,8 @@ int main()
             exit(0);
         }
         char *line = NULL;
-        size_t len = 0;
-        ssize_t read;
         
+
 
 
         display_user_prompt_function(parent_directory);
