@@ -58,7 +58,6 @@ int main()
         // fopen("/home/prietukani/Desktop/Codes/Coding/Sem 3/OSN/C Shell/C-Shell/src/pastevents.txt", "w");
         
         bool already_exists=false;
-        
         for (int i = 0; i < 15; i++)
         {
             past_events[i]=substr(past_events[i], 0, strlen(past_events[i]-1));
