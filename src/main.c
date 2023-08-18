@@ -32,6 +32,10 @@ int main()
             past_events[i]=(char*)malloc(sizeof(char)*1024);
         }
         // read all 15 commands from pastevents.txt 
+        for (int i = 0; i < 15; i++)
+        {
+            fgets()
+        }
         
         display_user_prompt_function(parent_directory);
 
