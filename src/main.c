@@ -12,7 +12,10 @@
 
 char **past_events;
 
-void file_write(char *input, )
+void file_write(char *input, int success)
+{
+    
+}
 
 int main()
 {
