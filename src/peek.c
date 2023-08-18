@@ -12,6 +12,8 @@ void peek_peek(char*command)
     char* peek_to=substr(command,5,strlen(command)-5);
 
     bool flag_a=false;
+    bool flag_l=false;
+
     
 
 
