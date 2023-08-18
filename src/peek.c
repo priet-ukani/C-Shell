@@ -13,7 +13,6 @@ void peek_peek(char*command)
 
     bool flag_a=false;
     bool flag_l=false;
-
     char* temp2=substr(peek_to,0,2);
     char* temp2_2=substr(peek_to,2,2);
     char* temp3=substr(peek_to,0,3);
@@ -22,7 +21,7 @@ void peek_peek(char*command)
     if(strcmp(temp2_2, "-l")==0) flag_l=true;
     else if(strcmp(temp2_2, "-a")==0) flag_a=true;
     if(strcmp(temp3, "-la")==0) flag_l=flag_a=true;
-    else if(strcmp(temp3, "-al")==0) flag_a=true;
+    else if(strcmp(temp3, "-al")==0) flag_l=flag_a=true;
     
     char *dir_path = (strlen(peek_to) > 0) ? peek_to : ".";
    
