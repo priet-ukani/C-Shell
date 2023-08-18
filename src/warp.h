@@ -13,7 +13,7 @@
 #include <signal.h>
 #include <dirent.h>
 
-void minus();
+int minus();
 int tilda();
 int warp_warp(char *command);
 
