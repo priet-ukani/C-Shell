@@ -73,6 +73,7 @@ void peek_peek(char*command)
         if(entry_name[0]=='.')
         {
             // hidden files to be ignored by default 
+            if()
             continue;
         }
         struct stat entry_info;
