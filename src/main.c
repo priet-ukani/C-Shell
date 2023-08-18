@@ -12,13 +12,13 @@
 
 char **past_events;
 
-void file_write()
+void file_write(char *input, )
 
 int main()
 {
     char *parent_directory = getcwd(NULL, 0); 
     // This gets the current working directory
-    
+    past_events=(char**)malloc(sizeof(char*)*17);
     char *line = NULL;
     for (int i = 0; i < 17; i++)
     {
