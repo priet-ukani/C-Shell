@@ -68,12 +68,12 @@ int main()
         if(!already_exists)
         {
             for (int k = 13; k >= 0; k--)
-        {
-            // past_events[k+1]=past_events[k];
-            strcpy(past_events[k+1],past_events[k]);
-        }
-        // past_events[0]=input;
-        strcpy(past_events[0],input);
+            {
+                // past_events[k+1]=past_events[k];
+                strcpy(past_events[k+1],past_events[k]);
+            }
+            // past_events[0]=input;
+            strcpy(past_events[0],input);
         }
         for (int i = 0; i < 15; i++)
         {
