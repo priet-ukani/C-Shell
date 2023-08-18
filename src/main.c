@@ -26,7 +26,7 @@ int main()
             exit(0);
         }
         char *line = NULL;
-        
+        char **past_events=(char**)
 
 
 
