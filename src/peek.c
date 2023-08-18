@@ -54,9 +54,10 @@ void print_directory_contents(char *path) {
     DIR *dir = opendir(path);
     if (dir) {
         struct dirent *entry;
-        
+        char **entry_items;
         while ((entry = readdir(dir)) != NULL) {
-            printf("%s\n", entry->d_name);
+            // printf("%s\n", entry->d_name);
+            
         }
 
         closedir(dir);
