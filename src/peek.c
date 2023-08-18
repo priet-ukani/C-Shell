@@ -31,7 +31,7 @@ void peek_peek(char*command)
     flag_l=false;
     ignore_start=0;
     flags_check(peek_to);
-    // printf("Flag_A: %d, Flag_L: %d\n", flag_a,flag_l);
+    printf("Flag_A: %d, Flag_L: %d\n", flag_a,flag_l);
     // remove the first ignore_start characters from the peek_to path 
     peek_to=substr(peek_to,ignore_start,strlen(peek_to)-ignore_start);
 
