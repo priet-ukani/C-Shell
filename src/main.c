@@ -31,6 +31,7 @@ int main()
         {
             past_events[i]=(char*)malloc(sizeof(char)*1024);
         }
+        // read all 15 commands from pastevents.txt 
         
 
 
