@@ -67,6 +67,7 @@ int main()
                 break;
             }
         }
+        printf("%d", already_exists);
         if(!already_exists)
         {
             for (int k = 13; k >= 0; k--)
