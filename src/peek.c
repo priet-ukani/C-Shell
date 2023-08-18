@@ -30,7 +30,7 @@ void peek_peek(char*command)
     }
     qsort(entries_store, entry_count, sizeof(struct dirent*), compare);
     for (size_t i = 0; i < entry_count; i++) {
-        const char *entry_name = entries[i];
+        const char *entry_name = entries_store[i];
         struct stat entry_info;
         if (lstat(entry_name, &entry_info) == -1) {
             perror("Error getting entry information");
