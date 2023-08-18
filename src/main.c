@@ -66,7 +66,11 @@ int main()
         bool already_exists=false;
         for (int i = 0; i < 15; i++)
         {
-            if(strcmp())
+            if(strcmp(input,past_events[i])==0)
+            {
+                already_exists=true;
+                break;
+            }
         }
         for (int i = 0; i < 15; i++)
         {
