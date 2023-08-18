@@ -1,0 +1,15 @@
+warp .. .. .. 
+warp .. .. 
+warp .. 
+v 
+f 
+fdv 
+dfv 
+v 
+vf 
+fd 
+dfv 
+dfv 
+vdknvnfv 
+warp .. .. .. 
+warp .. .. 
