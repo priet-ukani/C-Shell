@@ -64,7 +64,21 @@ int main()
         fopen(file_open_path, "w");
         // fopen("/home/prietukani/Desktop/Codes/Coding/Sem 3/OSN/C Shell/C-Shell/src/pastevents.txt", "w");
         bool already_exists=false;
-        
+        for (int i = 0; i < 15; i++)
+        {
+            for (int j = i+1; j < 15; j++)
+            {
+                if(strcmp(past_events[i], past_events[j])==0)
+                {
+                    already_exists=true;
+                    break;
+                }
+            }
+            if(already_exists)
+            {
+                break;
+            }
+        }
         for (int i = 0; i < 15; i++)
         {
             fprintf(fp, "%s", past_events[i]);
