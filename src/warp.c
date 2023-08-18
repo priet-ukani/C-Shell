@@ -64,7 +64,7 @@ int warp_warp(char *command)
         }
         else if (strcmp(tokens[i], "-")==0)
         {
-            minus();
+            return minus();
             i++;
             continue;
         }
