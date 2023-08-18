@@ -66,7 +66,6 @@ void warp_warp(char *command)
             i++;
             continue;
         }
-        
         previous_shell_path=getcwd(NULL, 0);
         int return_code=chdir(tokens[i]);
         puts(getcwd(NULL,0));
