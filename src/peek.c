@@ -6,6 +6,9 @@ int compare_entries(const void *a, const void *b) {
     return strcmp(*(const char **)a, *(const char **)b);
 }
 
+bool flag_a=false;
+bool flag_l=false;
+
 void flags_check(char* peek_to)
 {
     char* temp2=substr(peek_to,0,2);
