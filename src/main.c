@@ -107,6 +107,7 @@ int main()
             success |= execute_function(ok[i]);
             i++;
         }
+        write_to_file(success);
     }
     return 0;
 }
