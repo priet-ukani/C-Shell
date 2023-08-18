@@ -62,6 +62,7 @@ void print_directory_contents(char *path) {
             entry_items[entry_count]=entry->d_name;
         }
         qsort(entry_items, entry_count, sizeof(char *), compare_entries);
+        
         for (size_t i = 0; i < entry_count; i++)
         {
             char *entry_name = entry_items[i];
