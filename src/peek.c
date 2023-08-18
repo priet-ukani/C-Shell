@@ -1,6 +1,7 @@
 #include "execute.h"
 #include "extra_functions.h"
 #include "peek.h"
+#include "colours.h"
 
 int compare(const void*a, const void*b)
 {
@@ -19,7 +20,7 @@ void peek_peek(char*command)
     {
         perror(RED"Error"RESET);
     }
-    
+
     struct dirent* entries;
     struct dirent** entries_store;
     entries_store=(struct dirent **)malloc(sizeof(struct dirent*)*1024);
