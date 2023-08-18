@@ -40,8 +40,8 @@ void peek_peek(char*command)
     // = (strlen(peek_to) > 0) ? peek_to : ".";
     if(strcmp(peek_to, " ")) peek_to = ".";
     
-    
 
+    
     DIR *dir = opendir(dir_path);
     if (dir == NULL) {
         perror("Error opening directory");
