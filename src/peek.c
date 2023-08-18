@@ -73,7 +73,7 @@ void print_directory_contents(char *path) {
 
 
 
-void peek_peek(char *command)
+int peek_peek(char *command)
 {
     // peek works as ls command to list all files and folders
     char *peek_to = substr(command, 5, strlen(command) - 5);
