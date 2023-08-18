@@ -49,6 +49,26 @@ void flags_check(char *peek_to)
     }
 }
 
+
+void print_directory_contents(char *path) {
+    DIR *dir = opendir(path);
+    if (dir) {
+        printf("Contents of directory: %s\n", path);
+        printf("==============================\n");
+
+        struct dirent *entry;
+        while ((entry = readdir(dir)) != NULL) {
+            printf("%s\n", entry->d_name);
+        }
+
+        closedir(dir);
+    } else {
+        printf("Directory not found.\n");
+    }
+}
+
+
+
 void peek_peek(char *command)
 {
     // peek works as ls command to list all files and folders
