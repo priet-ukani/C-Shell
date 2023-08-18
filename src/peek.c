@@ -77,7 +77,6 @@ void peek_peek(char*command)
             {
                 // if not hidden files to be shown then continue;
                 continue;
-
             }
         }
         struct stat entry_info;
