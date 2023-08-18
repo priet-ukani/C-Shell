@@ -23,13 +23,13 @@ void peek_peek(char*command)
     struct dirent* entries;
     struct dirent** entries_store;
     entries_store=(struct dirent **)malloc(sizeof(struct dirent*)*1024);
-    int index=0;
+    int entry_count=0;
     while((entries=readdir(directory))!=NULL)
     {
-        entries_store[index++]=entries;
+        entries_store[entry_count++]=entries;
     }
-    qsort(entries_store, index, sizeof(struct dirent*), compare);
-  for (size_t i = 0; i < ; i++) {
+    qsort(entries_store, entry_count, sizeof(struct dirent*), compare);
+    for (size_t i = 0; i < entry_count; i++) {
         const char *entry_name = entry_names[i];
         struct stat entry_info;
         if (lstat(entry_name, &entry_info) == -1) {
