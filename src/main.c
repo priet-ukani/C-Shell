@@ -70,7 +70,7 @@ int main()
                 break;
             }
         }
-        printf("%d\n", already_exists);
+        // printf("%d\n", already_exists);
         if(!already_exists)
         {
             for (int k = 13; k >= 0; k--)
