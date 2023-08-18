@@ -6,6 +6,7 @@ int compare_entries(const void *a, const void *b) {
     return strcmp(*(const char **)a, *(const char **)b);
 }
 
+
 void peek_peek(char*command)
 {
     // peek works as ls command to list all files and folders 
