@@ -54,7 +54,11 @@ int main()
             i++;
         }
         
-        forr
+        for (int i = 0; i >= 0; i++)
+        {
+            
+        }
+        
     }
     return 0;
 }
