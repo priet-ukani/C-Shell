@@ -46,13 +46,13 @@ void write_to_file()
         }
         for (int i = 0; i < 15; i++)
         {
-            fprintf(fp, "%s", past_events[i]);
+            fprintf(f, "%s", past_events[i]);
             if(past_events[i][strlen(past_events[i])-1]!='\n')
             {
-                fprintf(fp, "\n");
+                fprintf(f, "\n");
             }
         }
-        fclose(fp);
+        fclose(f);
 }
 
 int main()
