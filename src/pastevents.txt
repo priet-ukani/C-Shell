@@ -1,15 +1,15 @@
-warp ..&.. 
-warp .. & .. 
-warp .. .. .. . 
-warp .. .. 
-warp .. 
-warp 
-
-
-
-
-
-
-
-
-
+peek & warp .. 
+seek ls ../../../../../.. 
+seek ls ~ 
+seek p ~ 
+seek peek ~ 
+seek peek 
+seek -e -f seek.c 
+seek -f -e seek.c 
+seek -f -e seek.h 
+seek -f -e seek 
+seek -e src .. 
+seek -e src ../.. 
+seek -e peek.h 
+peek warp 
+peek -e seek 

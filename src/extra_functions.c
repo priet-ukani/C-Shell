@@ -1,5 +1,6 @@
 #include "extra_functions.h"
 #include "colours.h"
+#include "main.h"
 // #include <stdio.h>
 // #include <stdlib.h>
 // #include <string.h>
@@ -13,6 +14,56 @@
 // char* remove_extra_spaces_and_tabs(char * input_str);
 
 // struct commands *split_commands(char *input_str);
+
+int mini(int a, int b)
+{
+    if (a < b)
+        return a;
+    return b;
+}
+
+char** separate_by_delimeter(char*str, char* delimeter)
+{
+    char **ans=(char**)malloc(sizeof(char*)*1024);
+    int index=0;
+    char *token;
+    for (int i = 0; i < 1024; i++)
+    {
+        ans[i]=(char*)malloc(sizeof(char)*1024);
+    }
+    token = strtok(str, delimeter);
+    ans[index++]=token;
+    while( token != NULL ) 
+    {
+        token = strtok(NULL, delimeter);
+        ans[index++]=token;
+    }
+    return ans;
+
+}
+
+char *replace_home(char *path)
+{
+    // replace ~ by home apth 
+    char *abs_path = malloc(sizeof(char) * (strlen(path) + strlen(shell_open_path)));
+    if (path[0] == '~' && (strlen(path) == 1 || path[1] == '/'))
+    {
+        if (strlen(path) == 1)
+        {
+            strcpy(abs_path, shell_open_path);
+        }
+        else
+        {
+            sprintf(abs_path, "%s%s", shell_open_path, path + 1);
+        }
+    }
+    else
+    {
+        strcpy(abs_path, path);
+    }
+
+    return abs_path;
+}
 
 char *remove_extra_spaces_and_tabs(char *input_str)
 {
@@ -141,6 +192,8 @@ int check_and_throw_error(int return_code, int errno_code, char* message)
     }
     return return_code;
 }
+
+
 
 // int main()
 // {

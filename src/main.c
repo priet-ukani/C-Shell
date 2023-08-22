@@ -1,63 +1,18 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <pwd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include "display_user_prompt.h"
-#include "extra_functions.h"
-#include "colours.h"
-#include "execute.h"
+#include "main.h"
+// extern char **past_events;
+// char* file_open_path;
+// char *input;
 
-
-char **past_events;
+char** past_events;
 char* file_open_path;
-char *input;
+char* input;
 
-void write_to_file(int success)
-{
-    FILE* f = fopen(file_open_path, "w");
-    // fopen("/home/prietukani/Desktop/Codes/Coding/Sem 3/OSN/C Shell/C-Shell/src/pastevents.txt", "w");
-    
-    bool already_exists=false;
-    if(input[strlen(input)-1]!='\n')
-        strcat(input,"\n");
-    for (int i = 0; i < 15; i++)
-    {
-        input=remove_extra_spaces_and_tabs(input);
-        past_events[i]=remove_extra_spaces_and_tabs(past_events[i]);
-        if(strcmp(input,past_events[i])==0)
-        {
-            already_exists=!already_exists;
-            break;
-        }
-    }
-    // printf("%d\n", already_exists);
-    if(!already_exists && success)
-    {
-        for (int k = 13; k >= 0; k--)
-        {
-            // past_events[k+1]=past_events[k];
-            strcpy(past_events[k+1],past_events[k]);
-        }
-        // past_events[0]=input;
-        strcpy(past_events[0],input);
-    }
-    for (int i = 0; i < 15; i++)
-    {
-        fprintf(f, "%s", past_events[i]);
-        if(past_events[i][strlen(past_events[i])-1]!='\n')
-        {
-            fprintf(f, "\n");
-        }
-    }
-    fclose(f);
-}
-
+char* shell_open_path;
 int main()
 {
     char *parent_directory = getcwd(NULL, 0); 
+    shell_open_path=(char*)malloc(1024*(sizeof(char)));
+    strcpy(shell_open_path, parent_directory);
     // This gets the current working directory
     past_events=(char**)malloc(sizeof(char*)*17);
     char *line = NULL;
@@ -92,22 +47,11 @@ int main()
 
         input=(char*)malloc(4096*sizeof(char));
         fgets(input,4096,stdin);
-        // // This takes the input from the user
-        input=remove_extra_spaces_and_tabs(input);
-        struct commands*ok=split_commands(input);
-        
 
-
-        int i=0;
-        int success=0;
-        while(ok[i].command!=NULL)
-        {
-            ok[i].command=remove_extra_spaces_and_tabs(ok[i].command);
-            // printf("%s %d\n", ok[i].command, ok[i].print_pid_and_background);
-            success |= execute_function(ok[i]);
-            i++;
-        }
-        write_to_file(success);
+        // This takes the input from the user
+        int success = execute_multi_commands(input);
+        // write_to_file(success);
+        write_to_file(1,input); // this always writes also invalid commands
     }
     return 0;
 }

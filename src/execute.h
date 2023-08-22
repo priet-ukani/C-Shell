@@ -15,7 +15,7 @@
 #include "extra_functions.h"
 
 char*substr(char*str,int start,int len);
-char** separate_by_delimeter(char*str, char* delimeter);
 int execute_function(struct commands command1);
+int execute_multi_commands(char *input);
 
 #endif
