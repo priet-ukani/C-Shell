@@ -22,6 +22,7 @@ char*substr(char*str,int start,int len)
 int execute_multi_commands(char*input)
 {
     input=remove_extra_spaces_and_tabs(input);
+    if(input[0]=='\n') return 0;
     char *cppy=input;
     struct commands*ok=split_commands(cppy);
     
@@ -29,9 +30,14 @@ int execute_multi_commands(char*input)
     int success=0;
     while(ok[i].command!=NULL)
     {
+
         ok[i].command=remove_extra_spaces_and_tabs(ok[i].command);
-        // printf("%s %d\n", ok[i].command, ok[i].print_pid_and_background);
-        success |= execute_function(ok[i]);
+        if(strcmp(ok[i].command,"")!=0)
+        {
+            // fprintf(stderr, "%s\n",ok[i].command);
+            // printf("%s %d\n", ok[i].command, ok[i].print_pid_and_background);
+            success |= execute_function(ok[i]);
+        }
         i++;
     }
     return success;
@@ -80,9 +86,8 @@ int execute_function(struct commands command1)
     {
         seek_seek(command);
     }
-    
     else
     {
-        other_system_commands(command, command1.print_pid_and_background);
+        other_commands(command, command1.print_pid_and_background);
     }
 }

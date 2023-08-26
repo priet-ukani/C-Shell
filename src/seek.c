@@ -96,7 +96,7 @@ void searchFile(char *path, char *name, bool searchFiles, bool searchDirs) {
 
 int seek_seek(char*command)
 {
-    puts(command);
+    // puts(command);
     char **Command = separate_by_delimeter(command, " " );
     bool flag_d=false;
     bool flag_f=false;
@@ -112,7 +112,11 @@ int seek_seek(char*command)
         if(strcmp(Command[index_it], "-e")==0) {flag_e=true;last_flag_index=index_it;}        
         index_it++;
     }
-    
+    if(index_it<2)
+    {
+        puts("Invalid number of arguments!");
+        return 0;
+    }
     char *filename_to_search_for=(char*) malloc(sizeof(char)*1024);
     strcpy(filename_to_search_for,Command[last_flag_index+1]);
     char *filepath_to_search_for=(char*) malloc(sizeof(char)*1024);

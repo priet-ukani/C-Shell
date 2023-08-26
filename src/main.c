@@ -3,15 +3,31 @@
 // char* file_open_path;
 // char *input;
 
+char *parent_directory;
 char** past_events;
 char* file_open_path;
 char* input;
-
 char* shell_open_path;
+char *parent_directory;
+char *print_bg_output;
+int print_bg_output_flag;
+char* previous_prompt_username;
+char* previous_prompt_system_name;
+char* previous_prompt_cwd;
+
+int begin=0, endtime=0;
 int main()
 {
-    char *parent_directory = getcwd(NULL, 0); 
+    system("clear");
+    set_signal_handlers();
+     
+    parent_directory = getcwd(NULL, 0); 
     shell_open_path=(char*)malloc(1024*(sizeof(char)));
+    previous_prompt_username=(char*)malloc(1024*(sizeof(char)));  
+    previous_prompt_system_name=(char*)malloc(1024*(sizeof(char)));
+    previous_prompt_cwd=(char*)malloc(1024*(sizeof(char)));
+    print_bg_output=(char*)malloc(1024*(sizeof(char)));
+    print_bg_output_flag=0;
     strcpy(shell_open_path, parent_directory);
     // This gets the current working directory
     past_events=(char**)malloc(sizeof(char*)*17);
@@ -44,14 +60,6 @@ int main()
         }
         fclose(fp);
         display_user_prompt_function(parent_directory);
-
-        input=(char*)malloc(4096*sizeof(char));
-        fgets(input,4096,stdin);
-
-        // This takes the input from the user
-        int success = execute_multi_commands(input);
-        // write_to_file(success);
-        write_to_file(1,input); // this always writes also invalid commands
     }
     return 0;
 }

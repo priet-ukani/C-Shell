@@ -12,13 +12,16 @@
 #include "extra_functions.h"
 #include "colours.h"
 #include "execute.h"
+// #include "bg.h"
 #include "pastevents.h"
 
+
 extern char **past_events;
+extern char *parent_directory;
 extern char* file_open_path;
 extern char *input;
 extern char* shell_open_path;
-
-
+    
+extern int begin, endtime;
 
 #endif
