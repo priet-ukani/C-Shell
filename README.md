@@ -18,13 +18,13 @@ A fully functional shell implemented in C with numerous features, such as :
 Run the makefile by the command ```make```. The executable file will be formed in the src folder with name ```priet_shell```. Run this by ```./priet_shell```. Alternative is to run directly with the help of ```bash start.sh```
 
 ```bash
-  make
-  cd src/
-  ./priet_shell
+    make
+    cd src/
+    ./priet_shell
 ``` 
 ```bash
-sudo chmod +x start.sh
-./start.sh
+    sudo chmod +x start.sh
+    ./start.sh
 ```
 
 ## Assumptions 
@@ -65,8 +65,93 @@ Multiple arguments are given in input seperated by `;` and also by `&` (denoting
 Codes/home/prietukani/Desktop/Codes
 [prietukani@priet-TUF /home/prietukani/Desktop/Codes]$ 
 ```
+## List files
+`peek` command is used to list all the files/directories in the current directory. It also supports `-l` and `-a` flags to shows all details and hidden files respectively.
+```bash
+[prietukani@priet-TUF /home/prietukani/Desktop/Codes/Github/Coding]$ peek 
+Arduino
+C
+Python
+README.md
+dbg.hpp
+```
 
-## Multiple commands
+## Search recursively
+`seek` command is used to search recursively for files or directories in the given path. It also accepts flags like `-d`(shows only directories), `-f`(shows only files) and `-e`(views/executes if onyl single result is found).
+```bash
+[prietukani@priet-TUF ~/]$ seek peek
+Found file: /home/prietukani/Desktop/Codes/Github/Coding/Sem 3/Operating Systems and Networks/C Shell/C-Shell/src/peek.c
+Found file: /home/prietukani/Desktop/Codes/Github/Coding/Sem 3/Operating Systems and Networks/C Shell/C-Shell/src/peek.h
+```
+
+
+##  System commands
+Shell executes the other system commands present in Bash as well like emacs, gedit etc. This should be possible in both foreground and background processes.
+```bash
+[prietukani@priet-TUF ~/]$ sleep 2
+[prietukani@priet-TUF ~/] sleep: 2s $ sleep 2 &
+[1] 52886
+[prietukani@priet-TUF ~/]$ 
+sleep 2 with pid 52886 exited normally.
+```
+
+
+## Get process info
+`proclore` command is used to obtain information regarding a process.
+```bash
+[prietukani@priet-TUF ~/]$ proclore 48121
+pid : 48121
+Process Status : R+
+Process Group : 48082
+Virtual Memory : 35086
+executable path : ~/priet_shell
+```
+
+## I/O Redirection and Piping
+I/O Redirection is when you change the default input/output (which is the terminal) to another file. Pipes are used to pass information between commands. 
+```bash
+[prietukani@priet-TUF ~/]$  cat < a.txt | wc | cat > b.txt               
+[prietukani@priet-TUF ~/]$ cat b.txt
+      1       3       9
+```
+
+## Activities
+`activities` command prints a list of all the processes currently running that were spawned by the shell. it gives the information- Command Name, pid and state : running or stopped.
+```bash
+[prietukani@priet-TUF ~/]$ sleep 10 &
+[1] 61588
+[prietukani@priet-TUF ~/]$ activities
+61588 : sleep 10 - Running
+```
+
+## Signals
+`ping` command is used to send signals to the processes. Also `Ctrl+D`, `Ctrl+C` and `Ctrl+Z` have been handled to work as they work in the Linux shell.
+```bash
+[prietukani@priet-TUF ~/]$ sleep 100 &
+[1] 63429
+[prietukani@priet-TUF ~/]$ ping 63429 9
+Sent signal 9 to process with pid 63429.
+
+sleep 100 with pid 63429 failed to exit normally.
+```
+
+## Foreground and Background
+`fg` command brings the running or stopped background process with corresponding pid to foreground, handing it the control of terminal. `bg` command changes the state of a stopped background process to running (in the background). 
+```bash
+[prietukani@priet-TUF ~/]$ sleep 14 &
+[3] 67929
+[prietukani@priet-TUF ~/]$ fg 67929
+[prietukani@priet-TUF ~/]$ sleep 100 &
+[1] 69148
+[prietukani@priet-TUF ~/]$ activities
+69148 : sleep 100 - Running
+[prietukani@priet-TUF ~/]$ ping 69148 20
+Sent signal 20 to process with pid 69148.
+[prietukani@priet-TUF ~/]$ bg 69148
+[prietukani@priet-TUF ~/]$ activities
+69148 : sleep 100 - Running
+```
+
 
 
 ## Directory Structure
@@ -104,4 +189,5 @@ Codes/home/prietukani/Desktop/Codes
 ## Authors
 
 - [Priet Ukani](https://github.com/priet-ukani)
+
 
