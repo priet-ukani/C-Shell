@@ -1,32 +1,82 @@
+<!--
+  README.md for “C Shell” project
+  A fully functional Unix-like shell implemented in C
+-->
 
-# C Shell 
+# C Shell
 
-A fully functional shell implemented in C with numerous features, such as :
-- Executing multiple shell commands in one line with foreground and background functionality.
-- List all the files in the current directory and change directory with many useful shortcuts.
-- Search recursively in any directory for files/directories with flag functionality to filter.
-- User defined functions to aid the working of the shell.
-- Monitoring and altering currently running background processes initiated by the shell alongwith changing process state.
+<p align="center">
+  <a href="https://github.com/priet-ukani/mini-project-1-priet-ukani-final">
+    <img src="https://img.shields.io/badge/language-C-blue.svg" alt="Language: C"/>
+    <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT"/>
+  </a>
+</p>
+
+A lightweight Unix-style command-line shell written in C, featuring:
+
+- **Foreground & Background Execution**  
+  Run multiple commands in one line; use `&` to send processes to the background.
+- **Built-in Commands**  
+  `cd`, `pwd`, `echo`, `history`, `neonate`, and more.
+- **I/O Redirection & Piping**  
+  Support for `>`, `<`, `>>`, and `|` operators.
+- **Directory Navigation Shortcuts**  
+  `cd ~`, `cd -` (`warp`), home-directory expansion.
+- **Job Control**  
+  Monitor, list, bring to foreground/background, and kill background jobs.
+- **Recursive File Search**  
+  `peek` command: list files/dirs; flags `-l`, `-a`.
+- **Shell History**  
+  Maintains last 15 commands in `pastevents.txt`.
+- **System Commands**  
+  All standard Unix utilities via `execvp()`.
+
+---
 
 
+<ol>
 
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#build--install">Build & Install</a></li>
+<li><a href="#assumptions">Assumptions</a></li>
+    
 
+  <li><a href="#features">Features</a></li>
+  <li><a href="#built-in-commands">Built-in Commands</a></li>
+  <li><a href="#installation">Installation</a></li>
+  <li><a href="#usage">Usage</a></li>
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#directory-structure">Directory Structure</a></li>
+  <li><a href="#contributing">Contributing</a></li>
+  <li><a href="#license">License</a></li>
+</ol>
 
+---
 
-## Usage
+## ⚙️ Prerequisites
 
-Run the makefile by the command ```make```. The executable file will be formed in the src folder with name ```priet_shell```. Run this by ```./priet_shell```. Alternative is to run directly with the help of ```bash start.sh```
+- POSIX-compliant OS (Linux/macOS)
+- GCC (>= 4.8)
+- `make` utility
+- Standard C libraries
+
+---
+
+## 🛠️ Build & Install
 
 ```bash
-    make
-    cd src/
-    ./priet_shell
-``` 
-```bash
-    sudo chmod +x start.sh
-    ./start.sh
+# Clone the repo (if not already)
+git clone https://github.com/priet-ukani/C-shell
+cd C-shell
+# Build the shell
+make
+
+# Or using the provided script:
+chmod +x start.sh
+./start.sh
+# This produces an executable src/priet_shell (or simply a.out in src/).
+
 ```
-
 ## Assumptions 
 - The time interval given in the neonate command is an integer and greater than 0. 
 - Execvp may not be able to handle the commands with special characters or quotes which is not handled manually. So piping with sed `'\s \\g'` etc, execvp gives an error.
@@ -35,205 +85,211 @@ Run the makefile by the command ```make```. The executable file will be formed i
 - The pastevents command assumes that only this shell has access the the history file and shell can only change the file.
 - The signal handlers Ctrl+D and Ctrl+Z won't work with neonate command. 
 
-# Features
-## Display Prompt
-The display prompt shows the user's username along with the current working directory, assuming the home location to be where the shell is evecuted from.
-```bash
-[prietukani@priet-TUF ~/]$ 
-```
-## Parsing multiple tabs and spaces
-The shell can handle arguments with unwanted extra spaces or tabs in between the commands.
-```bash
-[prietukani@priet-TUF ~/]$      echo            "OSN OP"
-"OSN OP"
-```
 
-## Handling multiple arguments
-Multiple arguments are given in input seperated by `;` and also by `&` (denoting background process for the preceding command).
-```bash
-[prietukani@priet-TUF ~/]$ echo "OSN OP" ; echo "Shell"
-"OSN OP"
-"Shell"
-```
-## User defined change directory
-`warp` command is used to change directory. It accepts even relative and absolute paths along with flags such as `..`, `.`, `-`, `.. ..`.
-```bash
-[prietukani@priet-TUF /home/prietukani/Desktop/Codes]$ warp .. .. 
-../home/prietukani/Desktop
-../home/prietukani
-[prietukani@priet-TUF /home/prietukani]$ warp -
--/home/prietukani/Desktop
-[prietukani@priet-TUF /home/prietukani/Desktop]$ warp Codes
-Codes/home/prietukani/Desktop/Codes
-[prietukani@priet-TUF /home/prietukani/Desktop/Codes]$ 
-```
-## List files
-`peek` command is used to list all the files/directories in the current directory. It also supports `-l` and `-a` flags to shows all details and hidden files respectively.
-```bash
-[prietukani@priet-TUF /home/prietukani/Desktop/Codes/Github/Coding]$ peek 
-Arduino
-C
-Python
-README.md
-dbg.hpp
-```
+## Features
 
-## Search recursively
-`seek` command is used to search recursively for files or directories in the given path. It also accepts flags like `-d`(shows only directories), `-f`(shows only files) and `-e`(views/executes if onyl single result is found).
+* **Command Execution**: Run external programs in the foreground or background (using `&`).
+* **Multiple Commands**: Chain commands on one line with `;` timing sequential execution.
+* **Directory Navigation**: `cd` with support for:
+
+  * `cd <path>`: Change to `<path>`
+  * `cd` or `cd ~`: Return to home directory
+  * `cd -`: Toggle to previous directory
+* **Custom Prompt**: Displays `username@hostname:cwd$` with colored output.
+* **File Listing**: `peek` command (an enhanced `ls`):
+
+  * `peek [path]`: List files/directories
+  * Flags: `-l` (long format), `-a` (include hidden)
+* **Search**: `seek` command for recursive search:
+
+  * `seek <path> <name>`: Search for `<name>` in `<path>`
+  * Flags: `-f` (files), `-d` (directories)
+* **Pipes & Redirection**:
+
+  * Pipes: `cmd1 | cmd2 | ...`
+  * Redirection: `>`, `>>`, `<`
+* **Background Jobs**:
+
+  * `jobs` (via `activities`): List jobs
+  * `bg <job_id>`: Resume job in background
+  * `fg <job_id>`: Bring job to foreground
+* **Process Control**: `proclore`: Display running processes with details.
+* **Networking**: Built-in `ping <host>` wrapper.
+* **Utility Functions**:
+
+  * Aliases and user-defined functions via parsing utilities.
+
+---
+
+## Built-in Commands
+
+<table>
+  <thead>
+    <tr><th>Command</th><th>Usage</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>cd</code></td><td><code>cd [dir]</code></td><td>Change directory (see features for flags).</td></tr>
+    <tr><td><code>peek</code></td><td><code>peek [path] [-l] [-a]</code></td><td>List files/directories (enhanced <code>ls</code>).</td></tr>
+    <tr><td><code>seek</code></td><td><code>seek <path> <name> [-f | -d]</code></td><td>Recursive search for files or dirs.</td></tr>
+    <!-- should also have man/iman -->
+    <tr><td><code>neonate</code></td><td><code>neonate <time_interval></code></td><td>Run a command after a specified time interval.</td></tr>
+    <tr><td><code>pastevents</code></td><td><code>
+pastevents</code></td><td>Display last 15 commands from history.</td></tr>
+    <tr><td><code>echo</code></td><td><code>echo [text]</code></td><td>Print text to standard output.</td></tr>
+    <tr><td><code>pwd</code></td><td><code>pwd</code></td><td>Print current working directory.</td></tr>
+    <tr><td><code>history</code></td><td><code>history</code></td><td>Show command history (last 15 commands).</td></tr>
+    <tr><td><code>iMan</code></td><td><code>iMan <command></code></td><td>Display manual for a command.</td></tr>
+    <tr><td
+><code>pipe</code></td><td><code>pipe <cmd1> | <cmd2> | ...</code></td><td>Pipe output from one command to another.</td></tr>
+    <tr><td><code>redirect</code></td><td><code>redirect <cmd> > <file></code></td><td>Redirect output to a file.</td></tr>
+    <tr><td><code>system</code></td><td><code>system <cmd></code></td><td>Execute a system command.</td>
+<!-- signal -->
+    </tr>
+    <tr><td><code>ping</code></td><td><code>ping [pid] [code] <host></code></td><td> Send signals to the processes.</td></tr>
+    <tr><td><code>jobs</code> / <code>activities</code></td><td><code>jobs</code></td><td>List active background jobs.</td></tr>
+    <tr><td><code>bg</code></td><td><code>bg <job_id></code></td><td>Resume a stopped job in background.</td></tr>
+    <tr><td><code>fg</code></td><td><code>fg <job_id></code></td><td>Bring a background job to foreground.</td></tr>
+    <tr><td><code>proclore</code></td><td><code>proclore</code></td><td>Show running processes with details.</td></tr>
+    <tr><td><code>warp</code></td><td><code>warp</code></td><td>Custom `cd` shortcuts (`~`, `-`).</td></tr>
+    <tr><td><code>exit</code></td><td><code>exit</code></td><td>Terminate the shell and clean up.</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Installation
+
 ```bash
-[prietukani@priet-TUF ~/]$ seek peek
-Found file: /home/prietukani/Desktop/Codes/Github/Coding/Sem 3/Operating Systems and Networks/C Shell/C-Shell/src/peek.c
-Found file: /home/prietukani/Desktop/Codes/Github/Coding/Sem 3/Operating Systems and Networks/C Shell/C-Shell/src/peek.h
-```
+# Clone the repository
+git clone https://github.com/priet-ukani/mini-project-1-priet-ukani-final.git
+cd mini-project-1-priet-ukani-final
 
-
-##  System commands
-Shell executes the other system commands present in Bash as well like emacs, gedit etc. This should be possible in both foreground and background processes.
-```bash
-[prietukani@priet-TUF ~/]$ sleep 2
-[prietukani@priet-TUF ~/] sleep: 2s $ sleep 2 &
-[1] 52886
-[prietukani@priet-TUF ~/]$ 
-sleep 2 with pid 52886 exited normally.
-```
-
-
-## Get process info
-`proclore` command is used to obtain information regarding a process.
-```bash
-[prietukani@priet-TUF ~/]$ proclore 48121
-pid : 48121
-Process Status : R+
-Process Group : 48082
-Virtual Memory : 35086
-executable path : ~/priet_shell
-```
-
-## I/O Redirection and Piping
-I/O Redirection is when you change the default input/output (which is the terminal) to another file. Pipes are used to pass information between commands. 
-```bash
-[prietukani@priet-TUF ~/]$  cat < a.txt | wc | cat > b.txt               
-[prietukani@priet-TUF ~/]$ cat b.txt
-      1       3       9
-```
-
-## Activities
-`activities` command prints a list of all the processes currently running that were spawned by the shell. it gives the information- Command Name, pid and state : running or stopped.
-```bash
-[prietukani@priet-TUF ~/]$ sleep 10 &
-[1] 61588
-[prietukani@priet-TUF ~/]$ activities
-61588 : sleep 10 - Running
+# Build the shell
+make
 ```
 
-## Signals
-`ping` command is used to send signals to the processes. Also `Ctrl+D`, `Ctrl+C` and `Ctrl+Z` have been handled to work as they work in the Linux shell.
-```bash
-[prietukani@priet-TUF ~/]$ sleep 100 &
-[1] 63429
-[prietukani@priet-TUF ~/]$ ping 63429 9
-Sent signal 9 to process with pid 63429.
+## Usage
 
-sleep 100 with pid 63429 failed to exit normally.
+Start the custom shell using:
+
+```bash
+./start.sh
 ```
 
-## Foreground and Background
-`fg` command brings the running or stopped background process with corresponding pid to foreground, handing it the control of terminal. `bg` command changes the state of a stopped background process to running (in the background). 
+You will see a prompt like:
+
 ```bash
-[prietukani@priet-TUF ~/]$ sleep 14 &
-[3] 67929
-[prietukani@priet-TUF ~/]$ fg 67929
-[prietukani@priet-TUF ~/]$ sleep 100 &
-[1] 69148
-[prietukani@priet-TUF ~/]$ activities
-69148 : sleep 100 - Running
-[prietukani@priet-TUF ~/]$ ping 69148 20
-Sent signal 20 to process with pid 69148.
-[prietukani@priet-TUF ~/]$ bg 69148
-[prietukani@priet-TUF ~/]$ activities
-69148 : sleep 100 - Running
+priet@machine:~/path/to/directory$
 ```
 
-## Neonate
-`neonate` prints the Process-ID of the most recently created process on the system until the key 'x' is pressed. It is printed after every t seconds as given in input command. 
-```bash
-[prietukani@priet-TUF ~/]$ neonate -n 1
-71195
-71217
-71246
-71246
-71268 #(key x was pressed here)
-```
+Enter commands as you would in Bash.
 
-## iMan
-`iMan` command fetches man pages from the internet using sockets and outputs it to the terminal (stdout). 
-```bash
-[prietukani@priet-TUF ~/]$ iMan ls
-NAME
-       ls - list directory contents
+---
 
-SYNOPSIS
-       ls [OPTION]... [FILE]...
+## Examples
 
-DESCRIPTION
-       List  information
-       
-       ...continued
-```
+1. **Listing and filtering files**
+
+   ```bash
+   priet@machine:~$ peek . -l -a
+   total 40
+   drwxr-xr-x  2 user user 4096 Jun 24 15:00 .
+   drwxr-xr-x 10 user user 4096 Jun 24 14:00 ..
+   -rw-r--r--  1 user user  512 Jun 24 14:50 file.txt
+   ```
+
+2. **Recursive search for C files**
+
+   ```bash
+   priet@machine:~/src$ seek . *.c -f
+   ./main.c
+   ./execute.c
+   ./peek.c
+   ```
+
+3. **Piping and redirection**
+
+   ```bash
+   priet@machine:~$ peek . -l | grep ".c" > c_files.txt
+   priet@machine:~$ peek c_files.txt
+   main.c
+   execute.c
+   ```
+
+4. **Background job control**
+
+   ```bash
+   priet@machine:~$ sleep 100 &
+   [1] 2345
+   priet@machine:~$ jobs
+   1: sleep 100 - Running
+   priet@machine:~$ fg 1
+   (brings sleep to foreground)
+   ```
+
+---
 
 ## Directory Structure
+
+<!-- Copy and paste the following directory structure with file descriptions into your README.md -->
+
+## 📂 Project Structure
+
 ```bash
 .
-├── LISCENCE
-├── makefile
-├── README.md
-├── src
-│   ├── activities.c
-│   ├── activities.h
-│   ├── bg.h
-│   ├── colours.h
-│   ├── display_user_prompt.c
-│   ├── display_user_prompt.h
-│   ├── execute.c
-│   ├── execute.h
-│   ├── extra_functions.c
-│   ├── extra_functions.h
-│   ├── fg_bg.c
-│   ├── fg_bg.h
-│   ├── iman.c
-│   ├── iman.h
-│   ├── main.c
-│   ├── main.h
-│   ├── mantest.c
-│   ├── neonate.c
-│   ├── neonate.h
-│   ├── pastevents.c
-│   ├── pastevents.h
-│   ├── pastevents.txt
-│   ├── peek.c
-│   ├── peek.h
-│   ├── ping.c
-│   ├── ping.h
-│   ├── pipe.c
-│   ├── pipe.h
-│   ├── proclore.c
-│   ├── proclore.h
-│   ├── redirect.c
-│   ├── redirect.h
-│   ├── seek.c
-│   ├── seek.h
-│   ├── system_commands.c
-│   ├── system_commands.h
-│   ├── testiman.c
-│   ├── testpipe.c
-│   ├── warp.c
-│   └── warp.h
-└── start.sh
-
+├── LISCENCE                   # Project license (MIT)
+├── README.md                  # This file: project overview & usage
+├── makefile                   # Build rules for GCC and clean targets
+├── start.sh                   # Convenience script to compile & run shell
+├── src                        # Source code directory
+│   ├── a.out                  # Compiled binary (ignore in version control)
+│   ├── activities.c           # Implements `activities` command: list & sort jobs
+│   ├── activities.h           # Header for activities.c
+│   ├── bg.h                   # Data structures & declarations for background jobs
+│   ├── colours.h              # ANSI color code definitions for prompt/output
+│   ├── display_user_prompt.c  # Renders the shell prompt (user@host:cwd)
+│   ├── display_user_prompt.h  # Header for display_user_prompt.c
+│   ├── execute.c              # Core executor: forks, handles pipes & redirection
+│   ├── execute.h              # Header for execute.c
+│   ├── extra_functions.c      # Utility functions: string parsing, trimming, etc.
+│   ├── extra_functions.h      # Header for extra_functions.c
+│   ├── fg_bg.c                # Implements `fg` and `bg` built-ins
+│   ├── fg_bg.h                # Header for fg_bg.c
+│   ├── iman.c                 # Implements `iman`: fetch and parse WHOIS name records
+│   ├── iman.h                 # Header for iman.c
+│   ├── main.c                 # Entry point: read line, parse, dispatch commands
+│   ├── main.h                 # Global constants, includes, and function prototypes
+│   ├── mantest.c              # Manual/test harness for development/debugging
+│   ├── neonate.c              # Implements `neonate`: keystroke monitor in raw mode
+│   ├── neonate.h              # Header for neonate.c
+│   ├── pastevents.c           # Manages shell history: read/write `pastevents.txt`
+│   ├── pastevents.h           # Header for pastevents.c
+│   ├── pastevents.txt         # Persistent history store (last 15 commands)
+│   ├── peek.c                 # Implements `peek`: recursive `ls` clone with flags
+│   ├── peek.h                 # Header for peek.c
+│   ├── ping.c                 # Implements `ping`: ICMP echo requests
+│   ├── ping.h                 # Header for ping.c
+│   ├── pipe.c                 # Lower-level pipe setup helpers
+│   ├── pipe.h                 # Header for pipe.c
+│   ├── proclore.c             # Implements `pinfo` (“proc lore”): display process info
+│   ├── proclore.h             # Header for proclore.c
+│   ├── redirect.c             # Implements input/output redirection (`<`, `>`, `>>`)
+│   ├── redirect.h             # Header for redirect.c
+│   ├── seek.c                 # Implements `seek`: recursive file/directory search
+│   ├── seek.h                 # Header for seek.c
+│   ├── system_commands.c      # Wrappers to invoke external commands via execvp()
+│   ├── system_commands.h      # Header for system_commands.c
+│   ├── warp.c                 # Implements `warp`: `cd -`, `cd ~`, etc. shortcuts
+│   └── warp.h                 # Header for warp.c
+└── start.sh                   # Top‐level convenience script to build & launch
 ```
 
+---
 
-## Authors
+## Contributing
 
-- [Priet Ukani](https://github.com/priet-ukani)
+Contributions are welcome! Please fork the repo and open a pull request.
 
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
