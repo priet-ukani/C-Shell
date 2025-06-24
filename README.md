@@ -5,10 +5,14 @@
 
 # C Shell
 
+**Author:** Priet Ukani
+
 <p align="center">
   <a href="https://github.com/priet-ukani/mini-project-1-priet-ukani-final">
     <img src="https://img.shields.io/badge/language-C-blue.svg" alt="Language: C"/>
     <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT"/>
+    <!-- <img src="https://komarev.com/ghpvc/?username=priet-ukani&repo=C-Shell&color=blue" alt="Page Views"/> -->
+
   </a>
 </p>
 
@@ -39,12 +43,8 @@ A lightweight Unix-style command-line shell written in C, featuring:
 <li><a href="#prerequisites">Prerequisites</a></li>
 <li><a href="#build--install">Build & Install</a></li>
 <li><a href="#assumptions">Assumptions</a></li>
-    
-
   <li><a href="#features">Features</a></li>
   <li><a href="#built-in-commands">Built-in Commands</a></li>
-  <li><a href="#installation">Installation</a></li>
-  <li><a href="#usage">Usage</a></li>
   <li><a href="#examples">Examples</a></li>
   <li><a href="#directory-structure">Directory Structure</a></li>
   <li><a href="#contributing">Contributing</a></li>
@@ -154,35 +154,6 @@ pastevents</code></td><td>Display last 15 commands from history.</td></tr>
     <tr><td><code>exit</code></td><td><code>exit</code></td><td>Terminate the shell and clean up.</td></tr>
   </tbody>
 </table>
-
----
-
-## Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/priet-ukani/mini-project-1-priet-ukani-final.git
-cd mini-project-1-priet-ukani-final
-
-# Build the shell
-make
-```
-
-## Usage
-
-Start the custom shell using:
-
-```bash
-./start.sh
-```
-
-You will see a prompt like:
-
-```bash
-priet@machine:~/path/to/directory$
-```
-
-Enter commands as you would in Bash.
 
 ---
 
