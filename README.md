@@ -31,7 +31,9 @@ Run the makefile by the command ```make```. The executable file will be formed i
 - The time interval given in the neonate command is an integer and greater than 0. 
 - Execvp may not be able to handle the commands with special characters or quotes which is not handled manually. So piping with sed `'\s \\g'` etc, execvp gives an error.
 - iMan response depends on the connection and server. So it may be incomplete sometimes.
-
+- The length of the command given in input is of maximum 1024 characters. Most of the strings are assumed to be of this length.
+- The pastevents command assumes that only this shell has access the the history file and shell can only change the file.
+- The signal handlers Ctrl+D and Ctrl+Z won't work with neonate command. 
 
 # Features
 ## Display Prompt
@@ -152,42 +154,86 @@ Sent signal 20 to process with pid 69148.
 69148 : sleep 100 - Running
 ```
 
+## Neonate
+`neonate` prints the Process-ID of the most recently created process on the system until the key 'x' is pressed. It is printed after every t seconds as given in input command. 
+```bash
+[prietukani@priet-TUF ~/]$ neonate -n 1
+71195
+71217
+71246
+71246
+71268 #(key x was pressed here)
+```
 
+## iMan
+`iMan` command fetches man pages from the internet using sockets and outputs it to the terminal (stdout). 
+```bash
+[prietukani@priet-TUF ~/]$ iMan ls
+NAME
+       ls - list directory contents
+
+SYNOPSIS
+       ls [OPTION]... [FILE]...
+
+DESCRIPTION
+       List  information
+       
+       ...continued
+```
 
 ## Directory Structure
-
 ```bash
+.
 ├── LISCENCE
 ├── makefile
 ├── README.md
-└── src
-    ├── bg.h
-    ├── colours.h
-    ├── display_user_prompt.c
-    ├── display_user_prompt.h
-    ├── execute.c
-    ├── execute.h
-    ├── extra_functions.c
-    ├── extra_functions.h
-    ├── main.c
-    ├── main.h
-    ├── pastevents.c
-    ├── pastevents.h
-    ├── pastevents.txt
-    ├── peek.c
-    ├── peek.h
-    ├── priet_shell
-    ├── proclore.c
-    ├── proclore.h
-    ├── seek.c
-    ├── seek.h
-    ├── system_commands.c
-    ├── system_commands.h
-    ├── warp.c
-    └── warp.h
+├── src
+│   ├── activities.c
+│   ├── activities.h
+│   ├── bg.h
+│   ├── colours.h
+│   ├── display_user_prompt.c
+│   ├── display_user_prompt.h
+│   ├── execute.c
+│   ├── execute.h
+│   ├── extra_functions.c
+│   ├── extra_functions.h
+│   ├── fg_bg.c
+│   ├── fg_bg.h
+│   ├── iman.c
+│   ├── iman.h
+│   ├── main.c
+│   ├── main.h
+│   ├── mantest.c
+│   ├── neonate.c
+│   ├── neonate.h
+│   ├── pastevents.c
+│   ├── pastevents.h
+│   ├── pastevents.txt
+│   ├── peek.c
+│   ├── peek.h
+│   ├── ping.c
+│   ├── ping.h
+│   ├── pipe.c
+│   ├── pipe.h
+│   ├── proclore.c
+│   ├── proclore.h
+│   ├── redirect.c
+│   ├── redirect.h
+│   ├── seek.c
+│   ├── seek.h
+│   ├── system_commands.c
+│   ├── system_commands.h
+│   ├── testiman.c
+│   ├── testpipe.c
+│   ├── warp.c
+│   └── warp.h
+└── start.sh
+
 ```
+
+
 ## Authors
 
 - [Priet Ukani](https://github.com/priet-ukani)
-
 

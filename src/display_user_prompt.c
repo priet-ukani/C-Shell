@@ -1,5 +1,15 @@
 #include "display_user_prompt.h"
 #include "colours.h"
+#include "bg.h"
+
+void kill_all_exit()
+{
+    for(int i=0;i<num_of_bg_jobs;i++)
+    {
+        kill(BJobs[i].pid, SIGKILL);
+    }
+    exit(EXIT_SUCCESS);
+}
 
 void format_directory(char *cwd, char *parent_directory)
 {
@@ -72,7 +82,12 @@ void display_user_prompt_function(char *parent_directory)
     strcpy(previous_prompt_cwd, cwd);
     input=(char*)malloc(4096*sizeof(char));
     fgets(input,4096,stdin);
-
+    if(feof(stdin))
+    {
+        kill_all_exit();
+        exit(0);
+        return;
+    }
     // This takes the input from the user
     // This takes the input from the user
     int success = execute_multi_commands(input);

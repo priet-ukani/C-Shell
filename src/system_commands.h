@@ -34,4 +34,6 @@ void add_process(char** name,int pid);
 
 void other_commands(char*cmmd, int is_bg);
 
+void kill_all_exit();
+
 #endif

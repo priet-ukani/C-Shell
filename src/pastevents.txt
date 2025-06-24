@@ -1,15 +1,15 @@
-./priet_shell 
-ls 
-warp - 
-make 
+activities 
+sleep 2 
+sleep 
+sleep sjide 
+echo "Lorem Ipsum" | wc 
+seek peek 
+warp .. .. 
 warp .. 
-seek p 
-seek pk 
-seek pke 
-seek 
-peek 
-sdsa 
-exi 
-seek p 
-seek mme 
-seek 2 
+sleep 1 
+ok bro 
+
+ping 22808 9 
+activities 
+sleep 5 & 
+ls -l 

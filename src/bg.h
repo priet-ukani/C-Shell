@@ -6,7 +6,7 @@ struct BackgroundJobs
     int pid;
     char p_name[1024];
 };
-struct BackgroundJobs BJobs[1024];
-int num_of_bg_jobs=0;
+extern struct BackgroundJobs BJobs[1024];
+extern int num_of_bg_jobs;
 
 #endif

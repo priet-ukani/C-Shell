@@ -1,2 +1,2 @@
 main:
-	gcc -g src/main.c src/display_user_prompt.c src/extra_functions.c src/execute.c src/warp.c src/peek.c src/pastevents.c src/system_commands.c src/proclore.c src/seek.c -o src/priet_shell
+	gcc -g src/main.c src/iman.c src/display_user_prompt.c src/pipe.c src/extra_functions.c src/execute.c src/warp.c src/ping.c src/fg_bg.c src/peek.c src/pastevents.c src/redirect.c src/activities.c src/neonate.c src/system_commands.c src/proclore.c src/seek.c -o src/priet_shell

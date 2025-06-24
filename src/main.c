@@ -1,7 +1,8 @@
 #include "main.h"
-// extern char **past_events;
-// char* file_open_path;
-// char *input;
+#include <signal.h>
+extern char **past_events;
+char* file_open_path;
+char *input;
 
 char *parent_directory;
 char** past_events;
@@ -14,12 +15,23 @@ int print_bg_output_flag;
 char* previous_prompt_username;
 char* previous_prompt_system_name;
 char* previous_prompt_cwd;
+void set_signal_handlers()
+{
+    num_of_bg_jobs=0;  
+    signal(SIGTSTP,SIG_IGN);
+    // signal(SIGTSTP, kill_all_exit);
+    signal(SIGINT,SIG_IGN);
+    signal(SIGCHLD,child_signal);
+    // signal(SIGQUIT, kill_all_exit);
+}
 
 int begin=0, endtime=0;
 int main()
 {
     system("clear");
     set_signal_handlers();
+    // signal(SIGTSTP,SIG_IGN);
+
      
     parent_directory = getcwd(NULL, 0); 
     shell_open_path=(char*)malloc(1024*(sizeof(char)));
@@ -39,7 +51,7 @@ int main()
 
     while (1)
     {
-        // // read all the commands from the pastevents;
+        // // // read all the commands from the pastevents;
         FILE* fp;
         file_open_path=(char*)malloc(sizeof(char)*1024);
         strcpy(file_open_path, parent_directory);

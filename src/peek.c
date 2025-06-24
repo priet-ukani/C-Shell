@@ -251,12 +251,13 @@ void display_ls(char *directory_address_path, int flag_ls_a, int flag_ls_l)
             }
             directory = opendir(directory_address_path);
             int tmep_print = sum / 2;
-            if (sum != 0)
-            {
-                printf("total : %d\n", tmep_print);
-            }
+            // if (sum != 0)
+            // {
+            //     // printf("total : %d\n", tmep_print);
+            // }
             while ((file_ptr = readdir(directory)) != NULL)
             {
+                
                 if ((file_ptr = readdir(directory)) == NULL)
                     break;
                 if (flag_ls_a == 0 && file_ptr->d_name[0] == '.')

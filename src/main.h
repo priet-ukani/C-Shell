@@ -12,7 +12,7 @@
 #include "extra_functions.h"
 #include "colours.h"
 #include "execute.h"
-// #include "bg.h"
+#include "bg.h"
 #include "pastevents.h"
 
 

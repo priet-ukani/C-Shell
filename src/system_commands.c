@@ -1,14 +1,19 @@
 #include "system_commands.h"
 #include "bg.h"
 
+int num_of_bg_jobs;
+struct BackgroundJobs BJobs[1024];
 
-void set_signal_handlers()
-{
-    num_of_bg_jobs=0;  
-    signal(SIGTSTP,SIG_IGN);
-    signal(SIGINT,SIG_IGN);
-    signal(SIGCHLD,child_signal);
-}
+void timepass(){}
+// void set_signal_handlers()
+// {
+//     num_of_bg_jobs=0;  
+//     signal(SIGTSTP,SIG_IGN);
+//     // signal(SIGTSTP, kill_all_exit);
+//     signal(SIGINT,SIG_IGN);
+//     signal(SIGCHLD,child_signal);
+//     // signal(SIGQUIT, kill_all_exit);
+// }
 
 void child_signal()
 {
@@ -94,7 +99,7 @@ void other_commands(char*cmmd, int is_bg)
     else if(pid == 0) // child
     {
         signal(SIGINT,SIG_DFL);
-        signal(SIGTSTP,SIG_DFL);
+        // signal(SIGTSTP,SIG_DFL);
         
         setpgid(0,0);
     
@@ -134,5 +139,6 @@ void other_commands(char*cmmd, int is_bg)
             add_process(command, pid);
             printf("[%d] %d\n", num_of_bg_jobs, pid);
         }
+        // signal(SIGTSTP, SIG_IGN);
     }
 }
